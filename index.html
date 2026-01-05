@@ -8,10 +8,17 @@
     <title>Community Card Showcase</title>
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/png" href="Hall of Fame (1).png">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 
 <body>
-       <div class="circle-container">
+    <!-- Page Loader -->
+    <div class="page-loader" id="pageLoader">
+        <div class="loader-spinner"></div>
+    </div>
+
+    <div class="circle-container">
         <div class="circle"></div>
         <div class="circle"></div>
         <div class="circle"></div>
@@ -42,44 +49,41 @@
         <div class="circle"></div>
         <div class="circle"></div>
         <div class="circle"></div>
-      </div>
-      <script>
+    </div>
+
+    <script>
         document.addEventListener("DOMContentLoaded", function () {
-          const coords = { x: 0, y: 0 };
-          const circles = document.querySelectorAll(".circle");
+            const coords = { x: 0, y: 0 };
+            const circles = document.querySelectorAll(".circle");
 
-          circles.forEach(function (circle) {
-            circle.x = 0;
-            circle.y = 0;
-          });
-
-          window.addEventListener("mousemove", function (e) {
-            coords.x = e.pageX;
-            coords.y = e.pageY - window.scrollY; // Adjust for vertical scroll position
-          });
-
-          function animateCircles() {
-            let x = coords.x;
-            let y = coords.y; 
-            circles.forEach(function (circle, index) {
-              circle.style.left = `${x - 12}px`;
-              circle.style.top = `${y - 12}px`;
-              circle.style.transform = `scale(${(circles.length - index) / circles.length})`;
-              const nextCircle = circles[index + 1] || circles[0];
-              circle.x = x;
-              circle.y = y;
-                            x += (nextCircle.x - x) * 0.3;
-              y += (nextCircle.y - y) * 0.3;
+            circles.forEach(function (circle) {
+                circle.x = 0;
+                circle.y = 0;
             });
 
-            requestAnimationFrame(animateCircles);
-          }
+            window.addEventListener("mousemove", function (e) {
+                coords.x = e.pageX;
+                coords.y = e.pageY - window.scrollY;
+            });
 
-          animateCircles();
+            function animateCircles() {
+                let x = coords.x;
+                let y = coords.y;
+                circles.forEach(function (circle, index) {
+                    circle.style.left = `${x - 12}px`;
+                    circle.style.top = `${y - 12}px`;
+                    circle.style.transform = `scale(${(circles.length - index) / circles.length})`;
+                    const nextCircle = circles[index + 1] || circles[0];
+                    circle.x = x;
+                    circle.y = y;
+                    x += (nextCircle.x - x) * 0.3;
+                    y += (nextCircle.y - y) * 0.3;
+                });
+                requestAnimationFrame(animateCircles);
+            }
+            animateCircles();
         });
-
-      </script>
-
+    </script>
 
     <!-- NAVBAR START -->
     <nav class="navbar">
@@ -98,57 +102,64 @@
             <li><a href="https://github.com/Jayanta2004" target="_blank">GitHub</a></li>
             <li><a href="about.html">About</a></li>
         </ul>
-        
-    <button id="themeToggle" class="theme-toggle">🌙</button>
-    </nav>
 
+        <button id="themeToggle" class="theme-toggle">🌙</button>
+    </nav>
+    <!-- NAVBAR END -->
+
+    <!-- 🔢 CONTRIBUTOR STATS -->
+    <section class="stats-container">
+        <div class="stat-card">
+            <span id="totalCount">0</span>
+            <p>Total Members</p>
+        </div>
+        <div class="stat-card">
+            <span id="devCount">0</span>
+            <p>Developers</p>
+        </div>
+        <div class="stat-card">
+            <span id="contributorCount">0</span>
+            <p>Contributors</p>
+        </div>
+        <div class="stat-card">
+            <span id="maintainerCount">0</span>
+            <p>Maintainers</p>
+        </div>
+    </section>
 <!-- NAVBAR END -->
- <!-- 🔢 CONTRIBUTOR STATS -->
-<section class="stats-container">
-    <div class="stat-card">
-        <span id="totalCount">0</span>
-        <p>Total Members</p>
-    </div>
-    <div class="stat-card">
-        <span id="devCount">0</span>
-        <p>Developers</p>
-    </div>
-    <div class="stat-card">
-        <span id="contributorCount">0</span>
-        <p>Contributors</p>
-    </div>
-    <div class="stat-card">
-        <span id="maintainerCount">0</span>
-        <p>Maintainers</p>
-    </div>
-</section>
-<!-- 🔎 FILTER & SORT CONTROLS -->
-<div class="controls">
+
+<!-- 🔍 SEARCH & FILTER SECTION -->
+<section class="search-filter-container">
     <input 
         type="text" 
         id="searchInput" 
-        placeholder="Search by name..." 
-    />
-
-    <select id="roleFilter">
-        <option value="all">All Roles</option>
-        <option value="developer">Developer</option>
-        <option value="contributor">Contributor</option>
-        <option value="maintainer">Maintainer</option>
+        placeholder="🔍 Search by name..." 
+        onkeyup="filterCards()"
+        autocomplete="off"
+    >
+    
+    <div class="filter-buttons">
+        <button class="filter-btn active" onclick="filterByRole('all')">All</button>
+        <button class="filter-btn" onclick="filterByRole('developer')">Developers</button>
+        <button class="filter-btn" onclick="filterByRole('contributor')">Contributors</button>
+        <button class="filter-btn" onclick="filterByRole('maintainer')">Maintainers</button>
+    </div>
+    
+    <select id="sortSelect" class="sort-select" onchange="sortCards()">
+        <option value="default">Sort: Default</option>
+        <option value="az">A-Z</option>
+        <option value="za">Z-A</option>
+        <option value="newest">Newest First</option>
     </select>
+</section>
+    
 
-    <select id="sortSelect">
-        <option value="default">Sort By</option>
-        <option value="az">A–Z</option>
-        <option value="za">Z–A</option>
-        <option value="newest">Newest</option>
-    </select>
-
-    <button id="resetFilters">Reset</button>
-</div>
-
-
-    <!-- Main heading of the website -->
+    <!-- 🎲 RANDOM CARD BUTTON -->
+    <div class="random-button-container">
+        <button id="random-card-btn" class="random-btn">
+            Pick Developer
+        </button>
+    </div>
 
     <!-- Container that holds all the profile cards -->
     <div class="card-container">
@@ -159,7 +170,39 @@
             <h2>Project Admin</h2>
             <span class="role">Maintainer</span>
             <p>"Welcome to the project! Fork this repo and add your card below."</p>
-            <a href="https://github.com/Jayanta2004" class="card-btn" target="_blank">GitHub</a>
+            <div class="card-actions">
+                <a href="https://github.com/Jayanta2004" class="card-btn" target="_blank">GitHub</a>
+                <div class="share-container">
+                    <button class="share-btn" onclick="toggleShareMenu(this)">
+                        <i class="fas fa-share-alt"></i> Share
+                    </button>
+                    <div class="share-dropup">
+                        <a href="javascript:void(0)" onclick="shareToWhatsApp('Project Admin')">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                        <a href="javascript:void(0)" onclick="shareToLinkedIn('Project Admin')">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="javascript:void(0)" onclick="shareToTwitter('Project Admin')">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="javascript:void(0)" onclick="shareToFacebook('Project Admin')">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="javascript:void(0)" onclick="copyProfileLink('Project Admin')">
+                            <i class="fas fa-link"></i>
+                        </a>
+                    </div>
+                </div>
+            <div class="card-inner">
+                <img src="images/admin.jpg" alt="Admin Photo" class="card-img">
+                <h2>Project Admin</h2>
+                <span class="role">Maintainer</span>
+                <p>"Welcome to the project! Fork this repo and add your card below."</p>
+                <a href="https://github.com/Jayanta2004" class="card-btn" target="_blank">
+                    <i class="fab fa-github"></i> GitHub
+                </a>
+            </div>
         </div>
 
         <!-- 👇 CONTRIBUTORS: START COPYING FROM HERE 👇 -->
@@ -169,7 +212,39 @@
             <h2>Contributor Name</h2>
             <span class="role">Developer</span>
             <p>"I learned how to make a Pull Request today!"</p>
-            <a href="#" class="card-btn" target="_blank">View Profile</a>
+            <div class="card-actions">
+                <a href="#" class="card-btn" target="_blank">View Profile</a>
+                <div class="share-container">
+                    <button class="share-btn" onclick="toggleShareMenu(this)">
+                        <i class="fas fa-share-alt"></i> Share
+                    </button>
+                    <div class="share-dropup">
+                        <a href="javascript:void(0)" onclick="shareToWhatsApp('Contributor Name')">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                        <a href="javascript:void(0)" onclick="shareToLinkedIn('Contributor Name')">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="javascript:void(0)" onclick="shareToTwitter('Contributor Name')">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="javascript:void(0)" onclick="shareToFacebook('Contributor Name')">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="javascript:void(0)" onclick="copyProfileLink('Contributor Name')">
+                            <i class="fas fa-link"></i> 
+                        </a>
+                    </div>
+                </div>
+            <div class="card-inner">
+                <img src="images/user.png" alt="User Photo" class="card-img">
+                <h2>Contributor Name</h2>
+                <span class="role">Developer</span>
+                <p>"I learned how to make a Pull Request today!"</p>
+                <a href="#" class="card-btn" target="_blank">
+                    <i class="fas fa-external-link-alt"></i> View Profile
+                </a>
+            </div>
         </div>
         <!-- 👆 CONTRIBUTORS: END COPYING HERE 👆 -->
 
@@ -178,15 +253,63 @@
             <h2>Mohit Yadav</h2>
             <span class="role">Frontend Wizard</span>
             <p>"Hello world! This is my first PR."</p>
-            <a href="https://github.com/19-mohityadav" class="card-btn" target="_blank">GitHub</a>
+            <div class="card-actions">
+                <a href="https://github.com/19-mohityadav" class="card-btn" target="_blank">GitHub</a>
+                <div class="share-container">
+                    <button class="share-btn" onclick="toggleShareMenu(this)">
+                        <i class="fas fa-share-alt"></i> Share
+                    </button>
+                    <div class="share-dropup">
+                        <a href="javascript:void(0)" onclick="shareToWhatsApp('Mohit Yadav')">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                        <a href="javascript:void(0)" onclick="shareToLinkedIn('Mohit Yadav')">
+                            <i class="fab fa-linkedin"></i> 
+                        </a>
+                        <a href="javascript:void(0)" onclick="shareToTwitter('Mohit Yadav')">
+                            <i class="fab fa-twitter"></i> 
+                        </a>
+                        <a href="javascript:void(0)" onclick="shareToFacebook('Mohit Yadav')">
+                            <i class="fab fa-facebook"></i> 
+                        </a>
+                        <a href="javascript:void(0)" onclick="copyProfileLink('Mohit Yadav')">
+                            <i class="fas fa-link"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
-        
+
         <div class="card">
             <img src="images/Sameer-Baral.jpg" alt="Sameer's Photo" class="card-img">
             <h2>Sameer Baral</h2>
             <span class="role">Developer</span>
             <p>"This is my first Pull Request"</p>
-            <a href="https://github.com/SameerBaral" class="card-btn" target="_blank">GitHub</a>
+            <div class="card-actions">
+                <a href="https://github.com/SameerBaral" class="card-btn" target="_blank">GitHub</a>
+                <div class="share-container">
+                    <button class="share-btn" onclick="toggleShareMenu(this)">
+                        <i class="fas fa-share-alt"></i> Share
+                    </button>
+                    <div class="share-dropup">
+                        <a href="javascript:void(0)" onclick="shareToWhatsApp('Sameer Baral')">
+                            <i class="fab fa-whatsapp"></i> 
+                        </a>
+                        <a href="javascript:void(0)" onclick="shareToLinkedIn('Sameer Baral')">
+                            <i class="fab fa-linkedin"></i> 
+                        </a>
+                        <a href="javascript:void(0)" onclick="shareToTwitter('Sameer Baral')">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="javascript:void(0)" onclick="shareToFacebook('Sameer Baral')">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="javascript:void(0)" onclick="copyProfileLink('Sameer Baral')">
+                            <i class="fas fa-link"></i> 
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div class="card">
@@ -194,7 +317,31 @@
             <h2>Manas Sharma</h2>
             <span class="role">Contributor</span>
             <p>"My first open-source contribution through ECWoC!"</p>
-            <a href="https://github.com/ManasCodez" class="card-btn" target="_blank">GitHub</a>
+            <div class="card-actions">
+                <a href="https://github.com/ManasCodez" class="card-btn" target="_blank">GitHub</a>
+                <div class="share-container">
+                    <button class="share-btn" onclick="toggleShareMenu(this)">
+                        <i class="fas fa-share-alt"></i> Share
+                    </button>
+                    <div class="share-dropup">
+                        <a href="javascript:void(0)" onclick="shareToWhatsApp('Manas Sharma')">
+                            <i class="fab fa-whatsapp"></i> 
+                        </a>
+                        <a href="javascript:void(0)" onclick="shareToLinkedIn('Manas Sharma')">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="javascript:void(0)" onclick="shareToTwitter('Manas Sharma')">
+                            <i class="fab fa-twitter"></i> 
+                        </a>
+                        <a href="javascript:void(0)" onclick="shareToFacebook('Manas Sharma')">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="javascript:void(0)" onclick="copyProfileLink('Manas Sharma')">
+                            <i class="fas fa-link"></i> 
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div class="card">
@@ -202,7 +349,31 @@
             <h2>Shreya Kumari</h2>
             <span class="role">Contributor</span>
             <p>"Hello, This is my first Pull Request!"</p>
-            <a href="https://github.com/Shreyyyi" class="card-btn" target="_blank">GitHub</a>
+            <div class="card-actions">
+                <a href="https://github.com/Shreyyyi" class="card-btn" target="_blank">GitHub</a>
+                <div class="share-container">
+                    <button class="share-btn" onclick="toggleShareMenu(this)">
+                        <i class="fas fa-share-alt"></i> Share
+                    </button>
+                    <div class="share-dropup">
+                        <a href="javascript:void(0)" onclick="shareToWhatsApp('Shreya Kumari')">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                        <a href="javascript:void(0)" onclick="shareToLinkedIn('Shreya Kumari')">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="javascript:void(0)" onclick="shareToTwitter('Shreya Kumari')">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="javascript:void(0)" onclick="shareToFacebook('Shreya Kumari')">
+                            <i class="fab fa-facebook"></i> 
+                        </a>
+                        <a href="javascript:void(0)" onclick="copyProfileLink('Shreya Kumari')">
+                            <i class="fas fa-link"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div class="card">
@@ -210,7 +381,30 @@
             <h2>Sakshi Tamshetti</h2>
             <span class="role">Contributor</span>
             <p>"Hey, just made my first contribution via ECWoc - looking forward to the journey!"</p>
-            <a href="https://github.com/SakshiTamshetti" class="card-btn" target="_blank">GitHub</a>
+            <div class="card-actions">
+                <a href="https://github.com/SakshiTamshetti" class="card-btn" target="_blank">GitHub</a>
+                <div class="share-container">
+                    <button class="share-btn" onclick="toggleShareMenu(this)">
+                        <i class="fas fa-share-alt"></i> Share
+                    </button>
+                    <div class="share-dropup">
+                        <a href="javascript:void(0)" onclick="shareToWhatsApp('Sakshi Tamshetti')">
+                            <i class="fab fa-whatsapp"></i> 
+                        <a href="javascript:void(0)" onclick="shareToLinkedIn('Sakshi Tamshetti')">
+                            <i class="fab fa-linkedin"></i> 
+                        </a>
+                        <a href="javascript:void(0)" onclick="shareToTwitter('Sakshi Tamshetti')">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="javascript:void(0)" onclick="shareToFacebook('Sakshi Tamshetti')">
+                            <i class="fab fa-facebook"></i> 
+                        </a>
+                        <a href="javascript:void(0)" onclick="copyProfileLink('Sakshi Tamshetti')">
+                            <i class="fas fa-link"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div class="card">
@@ -218,7 +412,31 @@
             <h2>Muskan</h2>
             <span class="role">Contributor</span>
             <p>"Hello, This is my first open-source contribution through ECWoC!"</p>
-            <a href="https://github.com/squirrelk6755-ctrl" class="card-btn" target="_blank">GitHub</a>
+            <div class="card-actions">
+                <a href="https://github.com/squirrelk6755-ctrl" class="card-btn" target="_blank">GitHub</a>
+                <div class="share-container">
+                    <button class="share-btn" onclick="toggleShareMenu(this)">
+                        <i class="fas fa-share-alt"></i> Share
+                    </button>
+                    <div class="share-dropup">
+                        <a href="javascript:void(0)" onclick="shareToWhatsApp('Muskan')">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                        <a href="javascript:void(0)" onclick="shareToLinkedIn('Muskan')">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="javascript:void(0)" onclick="shareToTwitter('Muskan')">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="javascript:void(0)" onclick="shareToFacebook('Muskan')">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="javascript:void(0)" onclick="copyProfileLink('Muskan')">
+                            <i class="fas fa-link"></i> 
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div class="card">
@@ -226,7 +444,31 @@
             <h2>Himanshu</h2>
             <span class="role">Contributor</span>
             <p>"Excited to contribute to open source via ECWoC 2026 🚀"</p>
-            <a href="https://github.com/bugVixen-M" class="card-btn" target="_blank">GitHub</a>
+            <div class="card-actions">
+                <a href="https://github.com/bugVixen-M" class="card-btn" target="_blank">GitHub</a>
+                <div class="share-container">
+                    <button class="share-btn" onclick="toggleShareMenu(this)">
+                        <i class="fas fa-share-alt"></i> Share
+                    </button>
+                    <div class="share-dropup">
+                        <a href="javascript:void(0)" onclick="shareToWhatsApp('Himanshu')">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                        <a href="javascript:void(0)" onclick="shareToLinkedIn('Himanshu')">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="javascript:void(0)" onclick="shareToTwitter('Himanshu')">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="javascript:void(0)" onclick="shareToFacebook('Himanshu')">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="javascript:void(0)" onclick="copyProfileLink('Himanshu')">
+                            <i class="fas fa-link"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div class="card">
@@ -234,7 +476,31 @@
             <h2>Sunetra Bar</h2>
             <span class="role">Contributor</span>
             <p>"Hey, just made my first contribution via ECWoc - looking forward to the journey!"</p>
-            <a href="https://github.com/Bar-7150" class="card-btn" target="_blank">GitHub</a>
+            <div class="card-actions">
+                <a href="https://github.com/Bar-7150" class="card-btn" target="_blank">GitHub</a>
+                <div class="share-container">
+                    <button class="share-btn" onclick="toggleShareMenu(this)">
+                        <i class="fas fa-share-alt"></i> Share
+                    </button>
+                    <div class="share-dropup">
+                        <a href="javascript:void(0)" onclick="shareToWhatsApp('Sunetra Bar')">
+                            <i class="fab fa-whatsapp"></i> 
+                        </a>
+                        <a href="javascript:void(0)" onclick="shareToLinkedIn('Sunetra Bar')">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="javascript:void(0)" onclick="shareToTwitter('Sunetra Bar')">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="javascript:void(0)" onclick="shareToFacebook('Sunetra Bar')">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="javascript:void(0)" onclick="copyProfileLink('Sunetra Bar')">
+                            <i class="fas fa-link"></i> 
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div class="card">
@@ -242,7 +508,31 @@
             <h2>Alen Alexander</h2>
             <span class="role">Contributor</span>
             <p>"Happy to make my first open-source contribution!"</p>
-            <a href="https://github.com/alenalex-009" class="card-btn" target="_blank">GitHub</a>
+            <div class="card-actions">
+                <a href="https://github.com/alenalex-009" class="card-btn" target="_blank">GitHub</a>
+                <div class="share-container">
+                    <button class="share-btn" onclick="toggleShareMenu(this)">
+                        <i class="fas fa-share-alt"></i> Share
+                    </button>
+                    <div class="share-dropup">
+                        <a href="javascript:void(0)" onclick="shareToWhatsApp('Alen Alexander')">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                        <a href="javascript:void(0)" onclick="shareToLinkedIn('Alen Alexander')">
+                            <i class="fab fa-linkedin"></i> 
+                        </a>
+                        <a href="javascript:void(0)" onclick="shareToTwitter('Alen Alexander')">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="javascript:void(0)" onclick="shareToFacebook('Alen Alexander')">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="javascript:void(0)" onclick="copyProfileLink('Alen Alexander')">
+                            <i class="fas fa-link"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div class="card">
@@ -250,7 +540,31 @@
             <h2>YASH PATIL</h2>
             <span class="role">Contributor</span>
             <p>"CS student exploring Open Source. Happy to make my first PR!"</p>
-            <a href="https://github.com/yash12991" class="card-btn" target="_blank">GitHub</a>
+            <div class="card-actions">
+                <a href="https://github.com/yash12991" class="card-btn" target="_blank">GitHub</a>
+                <div class="share-container">
+                    <button class="share-btn" onclick="toggleShareMenu(this)">
+                        <i class="fas fa-share-alt"></i> Share
+                    </button>
+                    <div class="share-dropup">
+                        <a href="javascript:void(0)" onclick="shareToWhatsApp('YASH PATIL')">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                        <a href="javascript:void(0)" onclick="shareToLinkedIn('YASH PATIL')">
+                            <i class="fab fa-linkedin"></i> 
+                        </a>
+                        <a href="javascript:void(0)" onclick="shareToTwitter('YASH PATIL')">
+                            <i class="fab fa-twitter"></i> 
+                        </a>
+                        <a href="javascript:void(0)" onclick="shareToFacebook('YASH PATIL')">
+                            <i class="fab fa-facebook"></i> 
+                        </a>
+                        <a href="javascript:void(0)" onclick="copyProfileLink('YASH PATIL')">
+                            <i class="fas fa-link"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div class="card">
@@ -258,7 +572,31 @@
             <h2>Pranav Agarwal</h2>
             <span class="role">Frontend Developer</span>
             <p>"Starting my open-source journey with ECWoC 🚀"</p>
-            <a href="https://github.com/agarwalpranav0711" class="card-btn" target="_blank">GitHub</a>
+            <div class="card-actions">
+                <a href="https://github.com/agarwalpranav0711" class="card-btn" target="_blank">GitHub</a>
+                <div class="share-container">
+                    <button class="share-btn" onclick="toggleShareMenu(this)">
+                        <i class="fas fa-share-alt"></i> Share
+                    </button>
+                    <div class="share-dropup">
+                        <a href="javascript:void(0)" onclick="shareToWhatsApp('Pranav Agarwal')">
+                            <i class="fab fa-whatsapp"></i> 
+                        </a>
+                        <a href="javascript:void(0)" onclick="shareToLinkedIn('Pranav Agarwal')">
+                            <i class="fab fa-linkedin"></i> 
+                        </a>
+                        <a href="javascript:void(0)" onclick="shareToTwitter('Pranav Agarwal')">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="javascript:void(0)" onclick="shareToFacebook('Pranav Agarwal')">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="javascript:void(0)" onclick="copyProfileLink('Pranav Agarwal')">
+                            <i class="fas fa-link"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div class="card">
@@ -266,7 +604,31 @@
             <h2>Neeru</h2>
             <span class="role">Open Source Contributor</span>
             <p>"CSE student passionate about exploring and contributing to Open Source projects."</p>
-            <a href="https://github.com/neeru24" class="card-btn" target="_blank">GitHub</a>
+            <div class="card-actions">
+                <a href="https://github.com/neeru24" class="card-btn" target="_blank">GitHub</a>
+                <div class="share-container">
+                    <button class="share-btn" onclick="toggleShareMenu(this)">
+                        <i class="fas fa-share-alt"></i> Share
+                    </button>
+                    <div class="share-dropup">
+                        <a href="javascript:void(0)" onclick="shareToWhatsApp('Neeru')">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                        <a href="javascript:void(0)" onclick="shareToLinkedIn('Neeru')">
+                            <i class="fab fa-linkedin"></i> 
+                        </a>
+                        <a href="javascript:void(0)" onclick="shareToTwitter('Neeru')">
+                            <i class="fab fa-twitter"></i> 
+                        </a>
+                        <a href="javascript:void(0)" onclick="shareToFacebook('Neeru')">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="javascript:void(0)" onclick="copyProfileLink('Neeru')">
+                            <i class="fas fa-link"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div class="card prithwish-custom-style">
@@ -275,7 +637,31 @@
             <span class="role">Contributor</span>
             <p>Hi! This is my first open-source contribution through ECWoC. Looking forward to contributing more and
                 learning along the way.</p>
-            <a href="https://github.com/Prithwish2025" class="card-btn" target="_blank">Github</a>
+            <div class="card-actions">
+                <a href="https://github.com/Prithwish2025" class="card-btn" target="_blank">Github</a>
+                <div class="share-container">
+                    <button class="share-btn" onclick="toggleShareMenu(this)">
+                        <i class="fas fa-share-alt"></i> Share
+                    </button>
+                    <div class="share-dropup">
+                        <a href="javascript:void(0)" onclick="shareToWhatsApp('Prithwish Pal')">
+                            <i class="fab fa-whatsapp"></i> 
+                        </a>
+                        <a href="javascript:void(0)" onclick="shareToLinkedIn('Prithwish Pal')">
+                            <i class="fab fa-linkedin"></i> 
+                        </a>
+                        <a href="javascript:void(0)" onclick="shareToTwitter('Prithwish Pal')">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="javascript:void(0)" onclick="shareToFacebook('Prithwish Pal')">
+                            <i class="fab fa-facebook"></i> 
+                        </a>
+                        <a href="javascript:void(0)" onclick="copyProfileLink('Prithwish Pal')">
+                            <i class="fas fa-link"></i> 
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div class="card">
@@ -283,7 +669,31 @@
             <h2>Abhijeet Padhy</h2>
             <span class="role">Open Source Contributor</span>
             <p>"Excited to contribute to open source🚀"</p>
-            <a href="https://github.com/Abhijeet-980" class="card-btn" target="_blank">GitHub</a>
+            <div class="card-actions">
+                <a href="https://github.com/Abhijeet-980" class="card-btn" target="_blank">GitHub</a>
+                <div class="share-container">
+                    <button class="share-btn" onclick="toggleShareMenu(this)">
+                        <i class="fas fa-share-alt"></i> Share
+                    </button>
+                    <div class="share-dropup">
+                        <a href="javascript:void(0)" onclick="shareToWhatsApp('Abhijeet Padhy')">
+                            <i class="fab fa-whatsapp"></i> 
+                        </a>
+                        <a href="javascript:void(0)" onclick="shareToLinkedIn('Abhijeet Padhy')">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="javascript:void(0)" onclick="shareToTwitter('Abhijeet Padhy')">
+                            <i class="fab fa-twitter"></i> 
+                        </a>
+                        <a href="javascript:void(0)" onclick="shareToFacebook('Abhijeet Padhy')">
+                            <i class="fab fa-facebook"></i> 
+                        </a>
+                        <a href="javascript:void(0)" onclick="copyProfileLink('Abhijeet Padhy')">
+                            <i class="fas fa-link"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div class="card">
@@ -291,8 +701,31 @@
             <h2>Anand Kumar Patel</h2>
             <span class="role">Developer</span>
             <p>"Coding is not just skill, it's an art of representing ideas into reality"</p>
-            <a href="https://www.linkedin.com/in/anand-kumar-patel-ba9607371/" class="card-btn"
-                target="_blank">Linkedin</a>
+            <div class="card-actions">
+                <a href="https://www.linkedin.com/in/anand-kumar-patel-ba9607371/" class="card-btn" target="_blank">Linkedin</a>
+                <div class="share-container">
+                    <button class="share-btn" onclick="toggleShareMenu(this)">
+                        <i class="fas fa-share-alt"></i> Share
+                    </button>
+                    <div class="share-dropup">
+                        <a href="javascript:void(0)" onclick="shareToWhatsApp('Anand Kumar Patel')">
+                            <i class="fab fa-whatsapp"></i> 
+                        </a>
+                        <a href="javascript:void(0)" onclick="shareToLinkedIn('Anand Kumar Patel')">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="javascript:void(0)" onclick="shareToTwitter('Anand Kumar Patel')">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="javascript:void(0)" onclick="shareToFacebook('Anand Kumar Patel')">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="javascript:void(0)" onclick="copyProfileLink('Anand Kumar Patel')">
+                            <i class="fas fa-link"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div class="card">
@@ -300,7 +733,31 @@
             <h2>Satyam Pandey</h2>
             <span class="role">Contributor</span>
             <p>"Hello world! This is my first PR."</p>
-            <a href="https://github.com/satyam-pandey" class="card-btn" target="_blank">GitHub</a>
+            <div class="card-actions">
+                <a href="https://github.com/satyam-pandey" class="card-btn" target="_blank">GitHub</a>
+                <div class="share-container">
+                    <button class="share-btn" onclick="toggleShareMenu(this)">
+                        <i class="fas fa-share-alt"></i> Share
+                    </button>
+                    <div class="share-dropup">
+                        <a href="javascript:void(0)" onclick="shareToWhatsApp('Satyam Pandey')">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                        <a href="javascript:void(0)" onclick="shareToLinkedIn('Satyam Pandey')">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="javascript:void(0)" onclick="shareToTwitter('Satyam Pandey')">
+                            <i class="fab fa-twitter"></i> 
+                        </a>
+                        <a href="javascript:void(0)" onclick="shareToFacebook('Satyam Pandey')">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="javascript:void(0)" onclick="copyProfileLink('Satyam Pandey')">
+                            <i class="fas fa-link"></i> 
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div class="card">
@@ -308,14 +765,63 @@
             <h2>Rohit Shinde</h2>
             <span class="role">Contributor</span>
             <p>"Exploring open source and learning GitHub through my first contribution."</p>
-            <a href="https://github.com/rohitshinde-tech" class="card-btn" target="_blank">GitHub</a>
+            <div class="card-actions">
+                <a href="https://github.com/rohitshinde-tech" class="card-btn" target="_blank">GitHub</a>
+                <div class="share-container">
+                    <button class="share-btn" onclick="toggleShareMenu(this)">
+                        <i class="fas fa-share-alt"></i> Share
+                    </button>
+                    <div class="share-dropup">
+                        <a href="javascript:void(0)" onclick="shareToWhatsApp('Rohit Shinde')">
+                            <i class="fab fa-whatsapp"></i> 
+                        </a>
+                        <a href="javascript:void(0)" onclick="shareToLinkedIn('Rohit Shinde')">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="javascript:void(0)" onclick="shareToTwitter('Rohit Shinde')">
+                            <i class="fab fa-twitter"></i> 
+                        </a>
+                        <a href="javascript:void(0)" onclick="shareToFacebook('Rohit Shinde')">
+                            <i class="fab fa-facebook"></i> 
+                        </a>
+                        <a href="javascript:void(0)" onclick="copyProfileLink('Rohit Shinde')">
+                            <i class="fas fa-link"></i> 
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
+
         <div class="card">
             <img src="images/Snehasish-tech.jpeg" alt="Snehasish Dey's Photo" class="card-img">
             <h2>Snehasish Dey</h2>
             <span class="role">Contributor</span>
             <p>"IT student passionate about Open Source, constantly exploring new technologies and contributing to meaningful projects."</p>
-            <a href="https://github.com/Snehasish-tech" class="card-btn" target="_blank">GitHub</a>
+            <div class="card-actions">
+                <a href="https://github.com/Snehasish-tech" class="card-btn" target="_blank">GitHub</a>
+                <div class="share-container">
+                    <button class="share-btn" onclick="toggleShareMenu(this)">
+                        <i class="fas fa-share-alt"></i> Share
+                    </button>
+                    <div class="share-dropup">
+                        <a href="javascript:void(0)" onclick="shareToWhatsApp('Snehasish Dey')">
+                            <i class="fab fa-whatsapp"></i> 
+                        </a>
+                        <a href="javascript:void(0)" onclick="shareToLinkedIn('Snehasish Dey')">
+                            <i class="fab fa-linkedin"></i> 
+                        </a>
+                        <a href="javascript:void(0)" onclick="shareToTwitter('Snehasish Dey')">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="javascript:void(0)" onclick="shareToFacebook('Snehasish Dey')">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="javascript:void(0)" onclick="copyProfileLink('Snehasish Dey')">
+                            <i class="fas fa-link"></i> 
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div class="card">
@@ -323,7 +829,31 @@
             <h2>Mayank Vyas</h2>
             <span class="role">Contributor</span>
             <p>"Hello world! This is my first PR."</p>
-            <a href="https://github.com/mayankvya" class="card-btn" target="_blank">GitHub</a>
+            <div class="card-actions">
+                <a href="https://github.com/mayankvya" class="card-btn" target="_blank">GitHub</a>
+                <div class="share-container">
+                    <button class="share-btn" onclick="toggleShareMenu(this)">
+                        <i class="fas fa-share-alt"></i> Share
+                    </button>
+                    <div class="share-dropup">
+                        <a href="javascript:void(0)" onclick="shareToWhatsApp('Mayank Vyas')">
+                            <i class="fab fa-whatsapp"></i> 
+                        </a>
+                        <a href="javascript:void(0)" onclick="shareToLinkedIn('Mayank Vyas')">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="javascript:void(0)" onclick="shareToTwitter('Mayank Vyas')">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="javascript:void(0)" onclick="shareToFacebook('Mayank Vyas')">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="javascript:void(0)" onclick="copyProfileLink('Mayank Vyas')">
+                            <i class="fas fa-link"></i> 
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div class="card">
@@ -331,33 +861,127 @@
             <h2>Ashish Kumar</h2>
             <span class="role">Contributor</span>
             <p>Hey, this is my first contribution to ECWoC!</p>
-            <a href="https://github.com/whoashish115" class="card-btn" target="_blank">GitHub</a>
+            <div class="card-actions">
+                <a href="https://github.com/whoashish115" class="card-btn" target="_blank">GitHub</a>
+                <div class="share-container">
+                    <button class="share-btn" onclick="toggleShareMenu(this)">
+                        <i class="fas fa-share-alt"></i> Share
+                    </button>
+                    <div class="share-dropup">
+                        <a href="javascript:void(0)" onclick="shareToWhatsApp('Ashish Kumar')">
+                            <i class="fab fa-whatsapp"></i> 
+                        </a>
+                        <a href="javascript:void(0)" onclick="shareToLinkedIn('Ashish Kumar')">
+                            <i class="fab fa-linkedin"></i> 
+                        </a>
+                        <a href="javascript:void(0)" onclick="shareToTwitter('Ashish Kumar')">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="javascript:void(0)" onclick="shareToFacebook('Ashish Kumar')">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="javascript:void(0)" onclick="copyProfileLink('Ashish Kumar')">
+                            <i class="fas fa-link"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
 
-
-        
         <div class="card">
             <img src="images/arpan.jpg" alt="Arpan" class="card-img">
             <h2>Arpan Purkait</h2>
             <span class="role">Django Developer</span>
             <p>Zindegi Ek safar hai.....</p>
-            <a href="https://github.com/arpanpurkait" class="card-btn" target="_blank">GitHub</a>
+            <div class="card-actions">
+                <a href="https://github.com/arpanpurkait" class="card-btn" target="_blank">GitHub</a>
+                <div class="share-container">
+                    <button class="share-btn" onclick="toggleShareMenu(this)">
+                        <i class="fas fa-share-alt"></i> Share
+                    </button>
+                    <div class="share-dropup">
+                        <a href="javascript:void(0)" onclick="shareToWhatsApp('Arpan Purkait')">
+                            <i class="fab fa-whatsapp"></i> 
+                        </a>
+                        <a href="javascript:void(0)" onclick="shareToLinkedIn('Arpan Purkait')">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="javascript:void(0)" onclick="shareToTwitter('Arpan Purkait')">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="javascript:void(0)" onclick="shareToFacebook('Arpan Purkait')">
+                            <i class="fab fa-facebook"></i> 
+                        </a>
+                        <a href="javascript:void(0)" onclick="copyProfileLink('Arpan Purkait')">
+                            <i class="fas fa-link"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
-      
+
         <div class="card">
-            <img src="images/roychowdhury-arghya.png" alt="Arghya" class="card-img"> 
+            <img src="images/roychowdhury-arghya.png" alt="Arghya" class="card-img">
             <h2>Arghya RoyChowdhury</h2>
             <span class="role">Contributor</span>
             <p>"Radhe Radhe!! This is my first Open-source Contribution , I'm really excited to be part of this community"</p>
-            <a href="https://github.com/roychowdhury-arghya" class="card-btn" target="_blank">GitHub</a>
+            <div class="card-actions">
+                <a href="https://github.com/roychowdhury-arghya" class="card-btn" target="_blank">GitHub</a>
+                <div class="share-container">
+                    <button class="share-btn" onclick="toggleShareMenu(this)">
+                        <i class="fas fa-share-alt"></i> Share
+                    </button>
+                    <div class="share-dropup">
+                        <a href="javascript:void(0)" onclick="shareToWhatsApp('Arghya RoyChowdhury')">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                        <a href="javascript:void(0)" onclick="shareToLinkedIn('Arghya RoyChowdhury')">
+                            <i class="fab fa-linkedin"></i> 
+                        </a>
+                        <a href="javascript:void(0)" onclick="shareToTwitter('Arghya RoyChowdhury')">
+                            <i class="fab fa-twitter"></i> 
+                        </a>
+                        <a href="javascript:void(0)" onclick="shareToFacebook('Arghya RoyChowdhury')">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="javascript:void(0)" onclick="copyProfileLink('Arghya RoyChowdhury')">
+                            <i class="fas fa-link"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
-      
+
         <div class="card">
-            <img src="images/user.png" alt="User Photo" class="card-img"> 
+            <img src="images/user.png" alt="User Photo" class="card-img">
             <h2>Amballa Sneha</h2>
             <span class="role">Developer</span>
             <p>"This is 1st PR in EWOC'26 "</p>
-            <a href="https://github.com/Sneha-Amballa" class="card-btn" target="_blank">View Profile</a>
+            <div class="card-actions">
+                <a href="https://github.com/Sneha-Amballa" class="card-btn" target="_blank">View Profile</a>
+                <div class="share-container">
+                    <button class="share-btn" onclick="toggleShareMenu(this)">
+                        <i class="fas fa-share-alt"></i> Share
+                    </button>
+                    <div class="share-dropup">
+                        <a href="javascript:void(0)" onclick="shareToWhatsApp('Amballa Sneha')">
+                            <i class="fab fa-whatsapp"></i> 
+                        </a>
+                        <a href="javascript:void(0)" onclick="shareToLinkedIn('Amballa Sneha')">
+                            <i class="fab fa-linkedin"></i> 
+                        </a>
+                        <a href="javascript:void(0)" onclick="shareToTwitter('Amballa Sneha')">
+                            <i class="fab fa-twitter"></i> 
+                        </a>
+                        <a href="javascript:void(0)" onclick="shareToFacebook('Amballa Sneha')">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="javascript:void(0)" onclick="copyProfileLink('Amballa Sneha')">
+                            <i class="fas fa-link"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div class="card">
@@ -365,7 +989,31 @@
             <h2>Krishna Kumar</h2>
             <span class="role">Contributor</span>
             <p>"Excited to make my first open-source contribution through ECWoC 2026"</p>
-            <a href="https://github.com/krishnx21" class="card-btn" target="_blank">GitHub</a>
+            <div class="card-actions">
+                <a href="https://github.com/krishnx21" class="card-btn" target="_blank">GitHub</a>
+                <div class="share-container">
+                    <button class="share-btn" onclick="toggleShareMenu(this)">
+                        <i class="fas fa-share-alt"></i> Share
+                    </button>
+                    <div class="share-dropup">
+                        <a href="javascript:void(0)" onclick="shareToWhatsApp('Krishna Kumar')">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                        <a href="javascript:void(0)" onclick="shareToLinkedIn('Krishna Kumar')">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="javascript:void(0)" onclick="shareToTwitter('Krishna Kumar')">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="javascript:void(0)" onclick="shareToFacebook('Krishna Kumar')">
+                            <i class="fab fa-facebook"></i> 
+                        </a>
+                        <a href="javascript:void(0)" onclick="copyProfileLink('Krishna Kumar')">
+                            <i class="fas fa-link"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div class="card">
@@ -373,7 +1021,31 @@
             <h2>Aditya Jain</h2>
             <span class="role">Contributor</span>
             <p>"This is my first open-source contribution through ECWoC thanks for this opportunity very much!"</p>
-            <a href="https://github.com/aditya2006magic" class="card-btn" target="_blank">GitHub</a>
+            <div class="card-actions">
+                <a href="https://github.com/aditya2006magic" class="card-btn" target="_blank">GitHub</a>
+                <div class="share-container">
+                    <button class="share-btn" onclick="toggleShareMenu(this)">
+                        <i class="fas fa-share-alt"></i> Share
+                    </button>
+                    <div class="share-dropup">
+                        <a href="javascript:void(0)" onclick="shareToWhatsApp('Aditya Jain')">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                        <a href="javascript:void(0)" onclick="shareToLinkedIn('Aditya Jain')">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="javascript:void(0)" onclick="shareToTwitter('Aditya Jain')">
+                            <i class="fab fa-twitter"></i> 
+                        </a>
+                        <a href="javascript:void(0)" onclick="shareToFacebook('Aditya Jain')">
+                            <i class="fab fa-facebook"></i> 
+                        </a>
+                        <a href="javascript:void(0)" onclick="copyProfileLink('Aditya Jain')">
+                            <i class="fas fa-link"></i> 
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div class="card">
@@ -381,7 +1053,31 @@
             <h2>Ashish Agrawal</h2>
             <span class="role">Backend Developer</span>
             <p>"I am excited to make my first open-source contribution and learned how to make a Pull Request today!"</p>
-            <a href="https://github.com/ashishagrawalcode" class="card-btn" target="_blank">View My GitHub Profile!</a>
+            <div class="card-actions">
+                <a href="https://github.com/ashishagrawalcode" class="card-btn" target="_blank">View My GitHub Profile!</a>
+                <div class="share-container">
+                    <button class="share-btn" onclick="toggleShareMenu(this)">
+                        <i class="fas fa-share-alt"></i> Share
+                    </button>
+                    <div class="share-dropup">
+                        <a href="javascript:void(0)" onclick="shareToWhatsApp('Ashish Agrawal')">
+                            <i class="fab fa-whatsapp"></i> 
+                        </a>
+                        <a href="javascript:void(0)" onclick="shareToLinkedIn('Ashish Agrawal')">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="javascript:void(0)" onclick="shareToTwitter('Ashish Agrawal')">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="javascript:void(0)" onclick="shareToFacebook('Ashish Agrawal')">
+                            <i class="fab fa-facebook"></i> 
+                        </a>
+                        <a href="javascript:void(0)" onclick="copyProfileLink('Ashish Agrawal')">
+                            <i class="fas fa-link"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div class="card">
@@ -389,7 +1085,31 @@
             <h2>Pallavi Verulkar</h2>
             <span class="role">frontend developer</span>
             <p>"I am excited to make my first open-source contribution!"</p>
-            <a href="https://github.com/Pallavi960" class="card-btn" target="_blank">View My GitHub Profile!</a>
+            <div class="card-actions">
+                <a href="https://github.com/Pallavi960" class="card-btn" target="_blank">View My GitHub Profile!</a>
+                <div class="share-container">
+                    <button class="share-btn" onclick="toggleShareMenu(this)">
+                        <i class="fas fa-share-alt"></i> Share
+                    </button>
+                    <div class="share-dropup">
+                        <a href="javascript:void(0)" onclick="shareToWhatsApp('Pallavi Verulkar')">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                        <a href="javascript:void(0)" onclick="shareToLinkedIn('Pallavi Verulkar')">
+                            <i class="fab fa-linkedin"></i> 
+                        </a>
+                        <a href="javascript:void(0)" onclick="shareToTwitter('Pallavi Verulkar')">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="javascript:void(0)" onclick="shareToFacebook('Pallavi Verulkar')">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="javascript:void(0)" onclick="copyProfileLink('Pallavi Verulkar')">
+                            <i class="fas fa-link"></i> 
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div class="card">
@@ -397,7 +1117,31 @@
             <h2>Jayesh Thar</h2>
             <span class="role">Contributor</span>
             <p>"Hy there! Let's connect and build..."</p>
-            <a href="https://github.com/jayesh-thar" class="card-btn" target="_blank">GitHub</a>
+            <div class="card-actions">
+                <a href="https://github.com/jayesh-thar" class="card-btn" target="_blank">GitHub</a>
+                <div class="share-container">
+                    <button class="share-btn" onclick="toggleShareMenu(this)">
+                        <i class="fas fa-share-alt"></i> Share
+                    </button>
+                    <div class="share-dropup">
+                        <a href="javascript:void(0)" onclick="shareToWhatsApp('Jayesh Thar')">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                        <a href="javascript:void(0)" onclick="shareToLinkedIn('Jayesh Thar')">
+                            <i class="fab fa-linkedin"></i> 
+                        </a>
+                        <a href="javascript:void(0)" onclick="shareToTwitter('Jayesh Thar')">
+                            <i class="fab fa-twitter"></i> 
+                        </a>
+                        <a href="javascript:void(0)" onclick="shareToFacebook('Jayesh Thar')">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="javascript:void(0)" onclick="copyProfileLink('Jayesh Thar')">
+                            <i class="fas fa-link"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div class="card">
@@ -405,15 +1149,63 @@
             <h2>Rakhi Dixit</h2>
             <span class="role">Contributor</span>
             <p>"I learned how to make a Pull Request today!"</p>
-            <a href="https://github.com/Rakhi-Dixit03" class="card-btn" target="_blank">GitHub</a>
+            <div class="card-actions">
+                <a href="https://github.com/Rakhi-Dixit03" class="card-btn" target="_blank">GitHub</a>
+                <div class="share-container">
+                    <button class="share-btn" onclick="toggleShareMenu(this)">
+                        <i class="fas fa-share-alt"></i> Share
+                    </button>
+                    <div class="share-dropup">
+                        <a href="javascript:void(0)" onclick="shareToWhatsApp('Rakhi Dixit')">
+                            <i class="fab fa-whatsapp"></i> 
+                        </a>
+                        <a href="javascript:void(0)" onclick="shareToLinkedIn('Rakhi Dixit')">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="javascript:void(0)" onclick="shareToTwitter('Rakhi Dixit')">
+                            <i class="fab fa-twitter"></i> 
+                        </a>
+                        <a href="javascript:void(0)" onclick="shareToFacebook('Rakhi Dixit')">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="javascript:void(0)" onclick="copyProfileLink('Rakhi Dixit')">
+                            <i class="fas fa-link"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
-      
+
         <div class="card">
             <img src="images/Bhavy-doe.jpeg" alt="Bhavy gupta Photo" class="card-img">
             <h2>Bhavy Gupta</h2>
             <span class="role">Open Source Contributor</span>
             <p>"Hello! This is my first PR.Happy to connect with U all..."</p>
-            <a href="https://github.com/BhavyGupta12911" class="card-btn" target="_blank">view my GitHub Profile Here!</a>
+            <div class="card-actions">
+                <a href="https://github.com/BhavyGupta12911" class="card-btn" target="_blank">view my GitHub Profile Here!</a>
+                <div class="share-container">
+                    <button class="share-btn" onclick="toggleShareMenu(this)">
+                        <i class="fas fa-share-alt"></i> Share
+                    </button>
+                    <div class="share-dropup">
+                        <a href="javascript:void(0)" onclick="shareToWhatsApp('Bhavy Gupta')">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                        <a href="javascript:void(0)" onclick="shareToLinkedIn('Bhavy Gupta')">
+                            <i class="fab fa-linkedin"></i> 
+                        </a>
+                        <a href="javascript:void(0)" onclick="shareToTwitter('Bhavy Gupta')">
+                            <i class="fab fa-twitter"></i> 
+                        </a>
+                        <a href="javascript:void(0)" onclick="shareToFacebook('Bhavy Gupta')">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="javascript:void(0)" onclick="copyProfileLink('Bhavy Gupta')">
+                            <i class="fas fa-link"></i> 
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div class="card">
@@ -421,9 +1213,34 @@
             <h2>Vrishti Kumari</h2>
             <span class="role">Frontend Developer</span>
             <p>"Learning open source one PR at a time 🚀"</p>
-            <a href="https://github.com/Vrishti-vibes" class="card-btn" target="_blank">GitHub</a>
+            <div class="card-actions">
+                <a href="https://github.com/Vrishti-vibes" class="card-btn" target="_blank">GitHub</a>
+                <div class="share-container">
+                    <button class="share-btn" onclick="toggleShareMenu(this)">
+                        <i class="fas fa-share-alt"></i> Share
+                    </button>
+                    <div class="share-dropup">
+                        <a href="javascript:void(0)" onclick="shareToWhatsApp('Vrishti Kumari')">
+                            <i class="fab fa-whatsapp"></i> 
+                        </a>
+                        <a href="javascript:void(0)" onclick="shareToLinkedIn('Vrishti Kumari')">
+                            <i class="fab fa-linkedin"></i> 
+                        </a>
+                        <a href="javascript:void(0)" onclick="shareToTwitter('Vrishti Kumari')">
+                            <i class="fab fa-twitter"></i> 
+                        </a>
+                        <a href="javascript:void(0)" onclick="shareToFacebook('Vrishti Kumari')">
+                            <i class="fab fa-facebook"></i> 
+                        </a>
+                        <a href="javascript:void(0)" onclick="copyProfileLink('Vrishti Kumari')">
+                            <i class="fas fa-link"></i> 
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
 
+        <!-- ADD YOUR NEW CARD ABOVE THIS COMMENT -->
         <div class="card">
             <img src="images/Deepjyoti-coder.jpg" alt="Deepjyoti's Photo" class="card-img">
             <h2>Deepjyoti Saha</h2>
@@ -432,11 +1249,34 @@
             <a href="https://github.com/deepjyoti-coder" class="card-btn" target="_blank">GitHub</a>
         </div>
 
-
+        <div class="card">
+            <img src="images/Yugendra-N.jpg" alt="Yugendra N" class="card-img">
+            <h2>Yugendra N</h2>
+            <span class="role">AIDS- Undergrad , Software Developer</span>
+            <p>"Developer passionate about learning and open source"</p>
+            <a href="https://github.com/Yugenjr" class="card-btn" target="_blank">GitHub</a>
+        </div>
+  
+        <div class="card">
+            <img src="images/JiyaBatra.jpg" alt="JiyaBatra's Photo" class="card-img">
+            <h2>JiyaBatra</h2>
+            <span class="role">Contributor</span>
+            <p>"Excited to contribute to open source!"</p>
+            <a href="https://github.com/JiyaBatra" class="card-btn" target="_blank">GitHub</a>
+        </div>
         
       <!-- ADD YOUR NEW CARD ABOVE THIS COMMENT -->
 
     </div> <!-- End of card-container -->
+
+    <!-- 🔗 SHARE NOTIFICATION -->
+    <div id="shareNotification" class="share-notification">
+        <div class="share-notification-content">
+            <h4>🔗 Link Copied!</h4>
+            <p id="shareUrl">Profile link copied to clipboard</p>
+        </div>
+        <button class="close-btn" onclick="closeNotification()">×</button>
+    </div>
 
     <!-- FOOTER START -->
     <footer class="footer">
@@ -527,6 +1367,11 @@ roleFilter.addEventListener("change", () => {
 sortSelect.addEventListener("change", applySorting);
 </script>
 
+    <!-- Scroll to Top Button -->
+    <button class="scroll-to-top" id="scrollToTop" onclick="scrollToTop()">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
     <script>
         const hamburger = document.getElementById("hamburger");
         const navLinks = document.getElementById("navLinks");
@@ -534,98 +1379,319 @@ sortSelect.addEventListener("change", applySorting);
         hamburger.addEventListener("click", () => {
             navLinks.classList.toggle("active");
         });
-    </script>
 
-    <!-- 🔍 SEARCH FILTER SCRIPT (ADDED) -->
-    <script>
-        function filterCards() {
-            const input = document.getElementById("searchInput").value.toLowerCase();
-            const cards = document.querySelectorAll(".card");
+        // Close share dropdown when clicking outside
+        document.addEventListener('click', function(event) {
+            if (!event.target.closest('.share-container')) {
+                document.querySelectorAll('.share-dropup').forEach(dropup => {
+                    dropup.classList.remove('show');
+                });
+            }
+        });
 
-            cards.forEach(card => {
-                const name = card.querySelector("h2").innerText.toLowerCase();
-                card.style.display = name.includes(input) ? "block" : "none";
+        // Toggle share dropdown
+        function toggleShareMenu(button) {
+            const dropup = button.nextElementSibling;
+            const allDropups = document.querySelectorAll('.share-dropup');
+            
+            // Close all other dropdowns
+            allDropups.forEach(otherDropup => {
+                if (otherDropup !== dropup) {
+                    otherDropup.classList.remove('show');
+                }
+            });
+            
+            // Toggle current dropdown
+            dropup.classList.toggle('show');
+        }
+
+        // Share functions
+        function generateShareUrl(developerName) {
+            const baseUrl = window.location.origin + window.location.pathname;
+            return `${baseUrl}?dev=${encodeURIComponent(developerName)}`;
+        }
+
+        function showNotification(message) {
+            const notification = document.getElementById('shareNotification');
+            const messageEl = document.getElementById('shareUrl');
+            if (notification && messageEl) {
+                messageEl.textContent = message;
+                notification.classList.add('show');
+                setTimeout(() => {
+                    notification.classList.remove('show');
+                }, 3000);
+            }
+        }
+
+        function closeNotification() {
+            const notification = document.getElementById('shareNotification');
+            if (notification) {
+                notification.classList.remove('show');
+            }
+        }
+
+        function copyProfileLink(developerName) {
+            const shareUrl = generateShareUrl(developerName);
+            navigator.clipboard.writeText(shareUrl).then(() => {
+                showNotification('Profile link copied to clipboard!');
+            }).catch(err => {
+                const textArea = document.createElement('textarea');
+                textArea.value = shareUrl;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+                showNotification('Profile link copied to clipboard!');
             });
         }
 
+        function shareToWhatsApp(developerName) {
+            const shareUrl = generateShareUrl(developerName);
+            const text = `Check out ${developerName} on Community Hall of Fame! ${shareUrl}`;
+            window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, '_blank');
+            showNotification('Opening WhatsApp...');
+        }
 
+        function shareToLinkedIn(developerName) {
+            const shareUrl = generateShareUrl(developerName);
+            window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`, '_blank');
+            showNotification('Opening LinkedIn...');
+        }
+
+        function shareToTwitter(developerName) {
+            const shareUrl = generateShareUrl(developerName);
+            const text = `Check out ${developerName} on Community Hall of Fame!`;
+            window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(shareUrl)}`, '_blank');
+            showNotification('Opening Twitter...');
+        }
+
+        function shareToFacebook(developerName) {
+            const shareUrl = generateShareUrl(developerName);
+            window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`, '_blank');
+            showNotification('Opening Facebook...');
+        }
+
+        // Existing search function
+        function filterCards() {
+            const input = document.getElementById("searchInput")?.value.toLowerCase();
+            if (!input) return;
+            const cards = document.querySelectorAll(".card");
+    <!-- 🔍 ENHANCED SEARCH & FILTER SCRIPT -->
+    <script>
+        let currentFilter = 'all';
+        let currentSearch = '';
+
+        function filterCards() {
+            currentSearch = document.getElementById("searchInput").value.toLowerCase();
+            applyFilters();
+        }
+
+        function filterByRole(role) {
+            currentFilter = role;
+            
+            // Update active button
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            applyFilters();
+        }
+
+        function applyFilters() {
+            const cards = document.querySelectorAll(".card");
+            const noResults = document.getElementById("noResults");
+            let visibleCount = 0;
+
+            cards.forEach(card => {
+                const name = card.querySelector("h2").innerText.toLowerCase();
+                const role = card.querySelector(".role").innerText.toLowerCase();
+                
+                const matchesSearch = name.includes(currentSearch);
+                const matchesFilter = currentFilter === 'all' || 
+                    (currentFilter === 'developer' && role.includes('developer')) ||
+                    (currentFilter === 'contributor' && role.includes('contributor')) ||
+                    (currentFilter === 'maintainer' && role.includes('maintainer'));
+                
+                if (matchesSearch && matchesFilter) {
+                    card.style.display = "block";
+                    card.classList.add('loading');
+                    visibleCount++;
+                } else {
+                    card.style.display = "none";
+                }
+            });
+
+            // Show/hide no results message
+            if (visibleCount === 0) {
+                noResults.classList.add('show');
+            } else {
+                noResults.classList.remove('show');
+            }
+        }
+
+        // Typewriter effect
+        // Scroll to Top Functionality
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        window.addEventListener('scroll', () => {
+            const scrollBtn = document.getElementById('scrollToTop');
+            if (window.pageYOffset > 300) {
+                scrollBtn.classList.add('show');
+            } else {
+                scrollBtn.classList.remove('show');
+            }
+        });
     </script>
 
     <script>
         // ----- TYPEWRITER LOOP -----
         const typewriter = document.getElementById('typewriter');
+        if (typewriter) {
+            const phrases = [
+                "🚀 Community Hall of Fame",
+                "Built by the Community",
+                "Open Source for Everyone",
+                "Contribute, Learn, Grow"
+            ];
+            let currentPhrase = 0;
+            let currentChar = 0;
+            let isDeleting = false;
+            let speed = 100;
 
-        const phrases = [
-            "🚀 Community Hall of Fame",
-            "Built by the Community",
-            "Open Source for Everyone",
-            "Contribute, Learn, Grow"
-        ];
+            function type() {
+                const fullText = phrases[currentPhrase];
+                if (isDeleting) {
+                    currentChar--;
+                    typewriter.textContent = fullText.substring(0, currentChar);
+                } else {
+                    currentChar++;
+                    typewriter.textContent = fullText.substring(0, currentChar);
+                }
 
-        let currentPhrase = 0;
-        let currentChar = 0;
-        let isDeleting = false;
-        let speed = 100; // typing speed (ms per character)
+                let typingSpeed = isDeleting ? speed / 2 : speed;
+                if (!isDeleting && currentChar === fullText.length) {
+                    typingSpeed = 1500;
+                    isDeleting = true;
+                } else if (isDeleting && currentChar === 0) {
+                    isDeleting = false;
+                    currentPhrase = (currentPhrase + 1) % phrases.length;
+                    typingSpeed = 500;
+                }
 
-        function type() {
-            const fullText = phrases[currentPhrase];
-
-            if (isDeleting) {
-                currentChar--;
-                typewriter.textContent = fullText.substring(0, currentChar);
-            } else {
-                currentChar++;
-                typewriter.textContent = fullText.substring(0, currentChar);
+                setTimeout(type, typingSpeed);
             }
-
-            // Adjust speed for deleting vs typing
-            let typingSpeed = isDeleting ? speed / 2 : speed;
-
-            // When phrase is complete
-            if (!isDeleting && currentChar === fullText.length) {
-                typingSpeed = 1500; // wait before deleting
-                isDeleting = true;
-            }
-            // When deletion is complete
-            else if (isDeleting && currentChar === 0) {
-                isDeleting = false;
-                currentPhrase = (currentPhrase + 1) % phrases.length;
-                typingSpeed = 500; // wait before typing next phrase
-            }
-
-            setTimeout(type, typingSpeed);
+            type();
         }
 
-        // Start typewriter
-        type();
-
-
-        // ----- PARALLAX EFFECT -----
+        // Parallax effect
         const heroHeading = document.querySelector('h1');
         const heroSubtitle = document.querySelector('.subtitle');
+        if (heroHeading && heroSubtitle) {
+            window.addEventListener('scroll', () => {
+                const scrollY = window.scrollY;
+                heroHeading.style.transform = `translateY(${scrollY * 0.2}px)`;
+                heroSubtitle.style.transform = `translateY(${scrollY * 0.15}px)`;
+            });
+        }
 
-        window.addEventListener('scroll', () => {
-            const scrollY = window.scrollY;
+        // Sort cards
+        const container = document.querySelector(".card-container");
+        const originalCards = container ? Array.from(container.children) : [];
 
-            heroHeading.style.transform = `translateY(${scrollY * 0.2}px)`;  // slower
-            heroSubtitle.style.transform = `translateY(${scrollY * 0.15}px)`; // slightly slower
+        function sortCards() {
+            const value = document.getElementById("sortSelect")?.value;
+            if (!value || !container) return;
+
+            let cards = Array.from(container.children);
+
+            if (value === "default") {
+                container.innerHTML = "";
+                originalCards.forEach(card => container.appendChild(card));
+                return;
+            }
+
+            if (value === "az") {
+                cards.sort((a, b) =>
+                    a.querySelector("h2").innerText.localeCompare(b.querySelector("h2").innerText)
+                );
+            }
+
+            if (value === "za") {
+                cards.sort((a, b) =>
+                    b.querySelector("h2").innerText.localeCompare(a.querySelector("h2").innerText)
+                );
+            }
+
+            if (value === "newest") {
+                cards.reverse();
+            }
+
+            container.innerHTML = "";
+            cards.forEach(card => container.appendChild(card));
+        }
+
+        // Theme toggle
+        const toggleBtn = document.getElementById("themeToggle");
+        const body = document.body;
+
+        if (localStorage.getItem("theme") === "light") {
+            body.classList.add("light-mode");
+            toggleBtn.textContent = "🌞";
+        }
+
+        toggleBtn.addEventListener("click", () => {
+            body.classList.toggle("light-mode");
+
+            if (body.classList.contains("light-mode")) {
+                toggleBtn.textContent = "🌞";
+                localStorage.setItem("theme", "light");
+            } else {
+                toggleBtn.textContent = "🌙";
+                localStorage.setItem("theme", "dark");
+            }
         });
-    </script>
+
+        // Stats counter
+        function animateValue(element, start, end, duration) {
+            let startTimestamp = null;
+
+            function step(timestamp) {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                element.innerText = Math.floor(progress * (end - start) + start);
+                if (progress < 1) {
+                    window.requestAnimationFrame(step);
+                }
+            }
 
 <script>
-/* ---------- SORT CARDS SCRIPT ---------- */
+/* ---------- ENHANCED SORT CARDS SCRIPT ---------- */
 const container = document.querySelector(".card-container");
-const originalCards = Array.from(container.children);
+let originalCards = Array.from(container.children);
 
 function sortCards() {
     const value = document.getElementById("sortSelect")?.value;
     if (!value) return;
 
-    let cards = Array.from(container.children);
+    // Get only visible cards
+    let cards = Array.from(container.children).filter(card => 
+        card.style.display !== 'none'
+    );
 
     if (value === "default") {
+        // Restore original order for visible cards
         container.innerHTML = "";
-        originalCards.forEach(card => container.appendChild(card));
+        originalCards.forEach(card => {
+            if (card.style.display !== 'none') {
+                container.appendChild(card);
+            }
+        });
         return;
     }
 
@@ -647,9 +1713,20 @@ function sortCards() {
         cards.reverse();
     }
 
-    container.innerHTML = "";
-    cards.forEach(card => container.appendChild(card));
+    // Reorder visible cards
+    cards.forEach(card => {
+        container.appendChild(card);
+    });
 }
+
+// Add stagger animation on load
+document.addEventListener('DOMContentLoaded', () => {
+    const cards = document.querySelectorAll('.card');
+    cards.forEach((card, index) => {
+        card.style.animationDelay = `${index * 0.05}s`;
+        card.classList.add('loading');
+    });
+});
 </script>
 
 <script>
@@ -686,32 +1763,61 @@ function animateValue(element, start, end, duration) {
         if (progress < 1) {
             window.requestAnimationFrame(step);
         }
-    }
 
-    window.requestAnimationFrame(step);
-}
+        function updateContributorStats() {
+            const cards = document.querySelectorAll(".card");
+            let total = cards.length;
+            let dev = 0;
+            let contributor = 0;
+            let maintainer = 0;
 
-function updateContributorStats() {
-    const cards = document.querySelectorAll(".card");
+            cards.forEach(card => {
+                const role = card.querySelector(".role")?.innerText.toLowerCase();
 
-    let total = cards.length;
-    let dev = 0;
-    let contributor = 0;
-    let maintainer = 0;
+                if (role.includes("developer")) dev++;
+                else if (role.includes("maintainer")) maintainer++;
+                else contributor++;
+            });
 
-    cards.forEach(card => {
-        const role = card.querySelector(".role")?.innerText.toLowerCase();
+            animateValue(document.getElementById("totalCount"), 0, total, 800);
+            animateValue(document.getElementById("devCount"), 0, dev, 800);
+            animateValue(document.getElementById("contributorCount"), 0, contributor, 800);
+            animateValue(document.getElementById("maintainerCount"), 0, maintainer, 800);
+        }
 
-        if (role.includes("developer")) dev++;
-        else if (role.includes("maintainer")) maintainer++;
-        else contributor++;
-    });
+        document.addEventListener("DOMContentLoaded", updateContributorStats);
 
-    animateValue(document.getElementById("totalCount"), 0, total, 800);
-    animateValue(document.getElementById("devCount"), 0, dev, 800);
-    animateValue(document.getElementById("contributorCount"), 0, contributor, 800);
-    animateValue(document.getElementById("maintainerCount"), 0, maintainer, 800);
-}
+        // Random card
+        const randomCardBtn = document.getElementById("random-card-btn");
+        const cards = document.querySelectorAll(".card");
+
+        function removeHighlights() {
+            cards.forEach(card => {
+                card.classList.remove("random-highlight");
+            });
+        }
+
+        function selectRandomCard() {
+            removeHighlights();
+            const visibleCards = Array.from(cards).filter(card =>
+                card.style.display !== "none"
+            );
+
+            if (visibleCards.length === 0) return;
+
+            const randomIndex = Math.floor(Math.random() * visibleCards.length);
+            const randomCard = visibleCards[randomIndex];
+
+            randomCard.classList.add("random-highlight");
+            randomCard.scrollIntoView({
+                behavior: "smooth",
+                block: "center"
+            });
+
+            setTimeout(() => {
+                randomCard.classList.remove("random-highlight");
+            }, 3000);
+        }
 
 document.addEventListener("DOMContentLoaded", updateContributorStats);
 /* =========================================
@@ -804,10 +1910,68 @@ document.addEventListener('DOMContentLoaded', function() {
     if (typeof updateContributorStats === 'function') {
         document.addEventListener('DOMContentLoaded', updateContributorStatsWithAnimation);
     }
+        if (randomCardBtn) {
+            randomCardBtn.addEventListener("click", selectRandomCard);
+        }
+document.addEventListener("DOMContentLoaded", () => {
+    updateContributorStats();
+    
+    // Hide page loader after content loads
+    setTimeout(() => {
+        const loader = document.getElementById('pageLoader');
+        if (loader) {
+            loader.classList.add('hidden');
+        }
+    }, 500);
 });
 </script>
 
+        document.addEventListener("keydown", (e) => {
+            if ((e.altKey || e.ctrlKey) && e.key === "r") {
+                e.preventDefault();
+                selectRandomCard();
+            }
+        });
 
+        // URL parameter highlighting
+        function checkUrlParams() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const devParam = urlParams.get('dev');
+
+            if (devParam) {
+                const developerName = decodeURIComponent(devParam);
+                setTimeout(() => {
+                    highlightDeveloperCard(developerName);
+                }, 500);
+            }
+        }
+
+        function highlightDeveloperCard(developerName) {
+            const cards = document.querySelectorAll(".card");
+            let foundCard = null;
+
+            cards.forEach(card => {
+                const nameElement = card.querySelector("h2");
+                if (nameElement && nameElement.textContent.trim() === developerName) {
+                    foundCard = card;
+                }
+            });
+
+            if (foundCard) {
+                foundCard.classList.add("shared-highlight");
+                foundCard.scrollIntoView({
+                    behavior: "smooth",
+                    block: "center"
+                });
+
+                setTimeout(() => {
+                    foundCard.classList.remove("shared-highlight");
+                }, 4000);
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", checkUrlParams);
+        window.addEventListener('popstate', checkUrlParams);
+    </script>
 </body>
-
 </html>
