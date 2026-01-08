@@ -3172,3 +3172,6 @@ body.light-mode .welcome-message {
         font-size: 1.5rem;
     }
 }
+.projects-container.compact-view {
+    grid-template-columns: 1fr;
+}

@@ -9,6 +9,67 @@
     <link rel="stylesheet" href="style.css" />
     <link rel="icon" type="image/png" href="Hall of Fame (1).png" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+    /* Projects grid vs compact (row) view */
+    .projects-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+        gap: 20px;
+        padding: 0 20px 40px;
+        box-sizing: border-box;
+    }
+
+    .project-card {
+        background: var(--bg-card);
+        border: 1px solid var(--border-secondary);
+        padding: 16px;
+        border-radius: 12px;
+        box-shadow: var(--shadow-sm);
+        transition: transform 0.15s ease, box-shadow 0.15s ease;
+        display: block;
+    }
+
+    .project-card:hover {
+        transform: translateY(-6px);
+        box-shadow: var(--shadow-md);
+    }
+
+    .project-desc { color: var(--text-secondary); margin: 8px 0; }
+
+    .project-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 8px; }
+    .project-tags span {
+        background: rgba(255,255,255,0.03);
+        padding: 6px 8px;
+        border-radius: 8px;
+        font-size: 0.8rem;
+        color: var(--text-secondary);
+    }
+
+    .project-links a { margin-right: 12px; text-decoration: none; color: var(--text-primary); font-weight: 600; }
+    .project-footer { margin-top: 12px; font-size: 0.85rem; color: var(--text-secondary); }
+
+    /* Compact (row/list) view */
+    .projects-container.compact-view {
+        display: block;
+        padding: 0 20px 40px;
+    }
+
+    .projects-container.compact-view .project-card {
+        display: flex;
+        gap: 16px;
+        align-items: center;
+        padding: 12px;
+    }
+
+    .projects-container.compact-view .project-card h2 { margin: 0; font-size: 1.05rem; }
+
+    @media (max-width: 600px) {
+        .projects-container { grid-template-columns: 1fr; }
+        .projects-container.compact-view .project-card { flex-direction: column; align-items: flex-start; }
+    }
+    </style>
 </head>
 
 <body>
@@ -39,6 +100,13 @@
         Learn, explore, and get inspired 🌱
     </p>
 </header>
+<!-- VIEW TOGGLE -->
+<div style="display:flex; justify-content:flex-end; max-width:1200px; margin:0 auto 20px; padding:0 20px;">
+    <button id="viewToggleBtn" class="view-toggle-btn" title="Toggle view">
+        <i class="fas fa-th-large"></i>
+    </button>
+</div>
+
 
 <!-- PROJECTS GRID -->
 <section class="projects-container">
@@ -90,6 +158,46 @@ hamburger.addEventListener("click", () => {
     navLinks.classList.toggle("active");
 });
 </script>
+<script>
+const viewToggleBtn = document.getElementById("viewToggleBtn");
+const projectsContainer = document.querySelector(".projects-container");
+
+let isCompact = false;
+
+viewToggleBtn.addEventListener("click", () => {
+    isCompact = !isCompact;
+
+    projectsContainer.classList.toggle("compact-view");
+
+    viewToggleBtn.innerHTML = isCompact
+        ? '<i class="fas fa-th-list"></i>'
+        : '<i class="fas fa-th-large"></i>';
+});
+</script>
+
+<script>
+const viewToggleBtn = document.getElementById("viewToggleBtn");
+const projectsContainer = document.querySelector(".projects-container");
+
+let isCompact = localStorage.getItem('projectsView') === 'compact';
+
+function applyView(compact) {
+    isCompact = compact;
+    projectsContainer.classList.toggle('compact-view', compact);
+    viewToggleBtn.innerHTML = compact
+        ? '<i class="fas fa-th-list"></i>'
+        : '<i class="fas fa-th-large"></i>';
+    viewToggleBtn.setAttribute('aria-pressed', compact ? 'true' : 'false');
+    viewToggleBtn.title = compact ? 'Switch to grid view' : 'Switch to list view';
+    localStorage.setItem('projectsView', compact ? 'compact' : 'grid');
+}
+
+viewToggleBtn.addEventListener('click', () => applyView(!isCompact));
+
+// Initialize on load
+applyView(isCompact);
+</script>
+
 
 </body>
 </html>
