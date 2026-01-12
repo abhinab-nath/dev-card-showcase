@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Password Strength Checker</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="card glass">
+    <h2>🔐 Password Strength Checker</h2>
+
+    <div class="password-field">
+      <input type="password" id="password" placeholder="Enter your password" />
+      <span id="toggle">👁️</span>
+    </div>
+
+    <button id="generate-btn" class="generate-btn">
+      Generate Strong Password
+    </button>
+
+
+    <div class="strength-bar">
+      <div id="strength-indicator"></div>
+    </div>
+
+    <p id="strength-text"></p>
+
+    <ul class="rules">
+      <li id="length">✔ Minimum 8 characters</li>
+      <li id="uppercase">✔ At least one uppercase letter</li>
+      <li id="lowercase">✔ At least one lowercase letter</li>
+      <li id="number">✔ At least one number</li>
+      <li id="special">✔ At least one special character</li>
+    </ul>
+
+    <div class="suggestion-box" id="suggestions"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
