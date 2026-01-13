@@ -4,10 +4,9 @@
   <meta charset="UTF-8" />
   <title>Feedback • Dev Card Showcase</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-
   <style>
     * {
       margin: 0;
@@ -16,128 +15,717 @@
       font-family: 'Inter', sans-serif;
     }
 
+    :root {
+      --primary: #3b82f6;
+      --primary-dark: #2563eb;
+      --primary-light: rgba(59, 130, 246, 0.1);
+      --bg-primary: #0f172a;
+      --bg-secondary: #1e293b;
+      --bg-card: rgba(30, 41, 59, 0.7);
+      --text-primary: #f8fafc;
+      --text-secondary: #94a3b8;
+      --text-muted: #64748b;
+      --border: #334155;
+      --success: #10b981;
+      --warning: #f59e0b;
+      --error: #ef4444;
+      --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.4);
+      --shadow-md: 0 10px 25px rgba(0, 0, 0, 0.2);
+      --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.1);
+      --gradient-primary: linear-gradient(135deg, #3b82f6, #8b5cf6);
+      --gradient-dark: linear-gradient(135deg, #0f172a, #020617);
+    }
+
     body {
       min-height: 100vh;
-      background: linear-gradient(135deg, #0f172a, #020617);
+      background: var(--gradient-dark);
       display: flex;
       align-items: center;
       justify-content: center;
-      color: white;
+      color: var(--text-primary);
+      padding: 20px;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* Animated background elements */
+    .bg-elements {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: -1;
+      overflow: hidden;
+    }
+
+    .bg-circle {
+      position: absolute;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, transparent 70%);
+      animation: float 20s infinite linear;
+    }
+
+    .bg-circle:nth-child(1) {
+      width: 300px;
+      height: 300px;
+      top: -100px;
+      left: -100px;
+      animation-delay: 0s;
+    }
+
+    .bg-circle:nth-child(2) {
+      width: 200px;
+      height: 200px;
+      bottom: -50px;
+      right: -50px;
+      animation-delay: -10s;
+      background: radial-gradient(circle, rgba(139, 92, 246, 0.1) 0%, transparent 70%);
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translate(0, 0) rotate(0deg);
+      }
+      25% {
+        transform: translate(20px, 20px) rotate(90deg);
+      }
+      50% {
+        transform: translate(0, 40px) rotate(180deg);
+      }
+      75% {
+        transform: translate(-20px, 20px) rotate(270deg);
+      }
     }
 
     .feedback-container {
       width: 100%;
-      max-width: 420px;
-      background: #020617;
-      border: 1px solid #1e293b;
-      border-radius: 16px;
-      padding: 24px;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+      max-width: 480px;
+      background: rgba(30, 41, 59, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      padding: 32px;
+      box-shadow: var(--shadow-lg);
+      backdrop-filter: blur(10px);
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .feedback-container:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+    }
+
+    .feedback-container::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: var(--gradient-primary);
+      border-radius: 20px 20px 0 0;
+    }
+
+    /* Header Section */
+    .header {
+      text-align: center;
+      margin-bottom: 32px;
+      position: relative;
+    }
+
+    .header-icon {
+      width: 70px;
+      height: 70px;
+      background: var(--gradient-primary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      font-size: 28px;
+      color: white;
+      box-shadow: 0 10px 20px rgba(59, 130, 246, 0.3);
+      animation: pulse 2s infinite ease-in-out;
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 10px 20px rgba(59, 130, 246, 0.3);
+      }
+      50% {
+        transform: scale(1.05);
+        box-shadow: 0 15px 30px rgba(59, 130, 246, 0.4);
+      }
     }
 
     h1 {
-      font-size: 22px;
-      margin-bottom: 6px;
+      font-size: 28px;
+      font-weight: 800;
+      margin-bottom: 8px;
+      background: var(--gradient-primary);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      display: inline-block;
     }
 
-    p {
-      font-size: 14px;
-      color: #94a3b8;
-      margin-bottom: 20px;
+    .subtitle {
+      font-size: 15px;
+      color: var(--text-secondary);
+      max-width: 320px;
+      margin: 0 auto;
+      line-height: 1.5;
+    }
+
+    /* Form Elements */
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .form-group {
+      position: relative;
     }
 
     label {
-      font-size: 13px;
-      margin-bottom: 6px;
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 8px;
       display: block;
-      color: #cbd5f5;
+      color: var(--text-primary);
+      transition: color 0.3s ease;
+    }
+
+    label i {
+      margin-right: 8px;
+      color: var(--primary);
+      width: 20px;
+      text-align: center;
     }
 
     input, select, textarea {
       width: 100%;
-      padding: 10px 12px;
-      margin-bottom: 16px;
-      border-radius: 10px;
-      border: 1px solid #1e293b;
-      background: #020617;
-      color: white;
-      font-size: 14px;
+      padding: 14px 16px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: rgba(15, 23, 42, 0.5);
+      color: var(--text-primary);
+      font-size: 15px;
       outline: none;
+      transition: all 0.3s ease;
+      font-weight: 500;
     }
 
-    textarea {
-      resize: none;
-      height: 100px;
+    input:focus, select:focus, textarea:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+      background: rgba(15, 23, 42, 0.8);
     }
 
     input::placeholder,
     textarea::placeholder {
-      color: #64748b;
+      color: var(--text-muted);
+      font-weight: 400;
     }
 
+    textarea {
+      resize: none;
+      min-height: 120px;
+      line-height: 1.6;
+      font-family: inherit;
+    }
+
+    /* Rating Stars */
+    .rating-group {
+      display: flex;
+      gap: 4px;
+      margin-top: 8px;
+    }
+
+    .star {
+      font-size: 24px;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      flex: 1;
+      text-align: center;
+      padding: 8px;
+      border-radius: 8px;
+    }
+
+    .star:hover {
+      color: var(--warning);
+      transform: scale(1.2);
+      background: rgba(245, 158, 11, 0.1);
+    }
+
+    .star.active {
+      color: var(--warning);
+      text-shadow: 0 0 10px rgba(245, 158, 11, 0.5);
+    }
+
+    .rating-labels {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 8px;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    /* Submit Button */
     button {
       width: 100%;
-      padding: 12px;
+      padding: 16px;
       border-radius: 12px;
       border: none;
-      background: #3b82f6;
+      background: var(--gradient-primary);
       color: white;
-      font-size: 15px;
-      font-weight: 600;
+      font-size: 16px;
+      font-weight: 700;
       cursor: pointer;
-      transition: 0.3s;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 10px;
+      position: relative;
+      overflow: hidden;
     }
 
     button:hover {
-      background: #2563eb;
       transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(59, 130, 246, 0.4);
     }
 
+    button:active {
+      transform: translateY(0);
+    }
+
+    button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: left 0.6s ease;
+    }
+
+    button:hover::before {
+      left: 100%;
+    }
+
+    button.loading {
+      pointer-events: none;
+      opacity: 0.8;
+    }
+
+    button.loading i {
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    /* Back Link */
     .back-link {
-      margin-top: 14px;
+      margin-top: 24px;
       text-align: center;
     }
 
     .back-link a {
-      color: #94a3b8;
-      font-size: 13px;
+      color: var(--text-secondary);
+      font-size: 14px;
       text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 20px;
+      border-radius: 10px;
+      transition: all 0.3s ease;
+      font-weight: 500;
     }
 
     .back-link a:hover {
+      color: var(--primary);
+      background: rgba(59, 130, 246, 0.1);
+      transform: translateX(-3px);
+    }
+
+    /* Character Counter */
+    .char-counter {
+      text-align: right;
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 4px;
+      transition: color 0.3s ease;
+    }
+
+    .char-counter.warning {
+      color: var(--warning);
+    }
+
+    .char-counter.error {
+      color: var(--error);
+    }
+
+    /* Success Message */
+    .success-message {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: rgba(16, 185, 129, 0.9);
       color: white;
+      padding: 16px 24px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      box-shadow: var(--shadow-md);
+      transform: translateX(120%);
+      transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+      z-index: 1000;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+    }
+
+    .success-message.show {
+      transform: translateX(0);
+    }
+
+    .success-message i {
+      font-size: 20px;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 520px) {
+      .feedback-container {
+        padding: 24px;
+        margin: 0 15px;
+      }
+      
+      h1 {
+        font-size: 24px;
+      }
+      
+      .header-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 24px;
+      }
+      
+      input, select, textarea {
+        padding: 12px 14px;
+      }
+      
+      button {
+        padding: 14px;
+      }
+    }
+
+    @media (max-width: 380px) {
+      .feedback-container {
+        padding: 20px;
+      }
+      
+      .rating-group {
+        flex-wrap: wrap;
+      }
+      
+      .star {
+        flex: 0 0 calc(20% - 4px);
+        font-size: 20px;
+      }
+    }
+
+    /* Print Styles */
+    @media print {
+      .feedback-container {
+        box-shadow: none;
+        border: 1px solid #ccc;
+        max-width: 100%;
+      }
+      
+      button, .back-link {
+        display: none;
+      }
     }
   </style>
 </head>
 <body>
+  <!-- Background Elements -->
+  <div class="bg-elements">
+    <div class="bg-circle"></div>
+    <div class="bg-circle"></div>
+  </div>
+
+  <!-- Success Message -->
+  <div class="success-message" id="successMessage">
+    <i class="fas fa-check-circle"></i>
+    <div>
+      <strong>Thank you!</strong>
+      <div style="font-size: 14px;">Your feedback has been submitted.</div>
+    </div>
+  </div>
 
   <div class="feedback-container">
-    <h1>Feedback</h1>
-    <p>Help us improve Dev Card Showcase</p>
+    <div class="header">
+      <div class="header-icon">
+        <i class="fas fa-comment-dots"></i>
+      </div>
+      <h1>Share Your Feedback</h1>
+      <p class="subtitle">Help us improve Dev Card Showcase and shape the future of our community</p>
+    </div>
 
-    <form onsubmit="submitFeedback(event)">
-      <label>Your Name (optional)</label>
-      <input type="text" placeholder="Enter your name" />
+    <form onsubmit="submitFeedback(event)" id="feedbackForm">
+      <div class="form-group">
+        <label><i class="fas fa-user"></i> Your Name (optional)</label>
+        <input type="text" placeholder="Enter your name" id="userName" />
+      </div>
 
-     
+      <div class="form-group">
+        <label><i class="fas fa-envelope"></i> Email (optional)</label>
+        <input type="email" placeholder="you@example.com" id="userEmail" />
+      </div>
 
-      <label>Your Feedback</label>
-      <textarea placeholder="Write your feedback..." required></textarea>
+      <div class="form-group">
+        <label><i class="fas fa-star"></i> Rating</label>
+        <div class="rating-group" id="ratingGroup">
+          <div class="star" data-value="1">
+            <i class="fas fa-star"></i>
+          </div>
+          <div class="star" data-value="2">
+            <i class="fas fa-star"></i>
+          </div>
+          <div class="star" data-value="3">
+            <i class="fas fa-star"></i>
+          </div>
+          <div class="star" data-value="4">
+            <i class="fas fa-star"></i>
+          </div>
+          <div class="star" data-value="5">
+            <i class="fas fa-star"></i>
+          </div>
+        </div>
+        <div class="rating-labels">
+          <span>Poor</span>
+          <span>Excellent</span>
+        </div>
+        <input type="hidden" id="ratingValue" value="0">
+      </div>
 
-      <button type="submit">Submit Feedback</button>
+      <div class="form-group">
+        <label><i class="fas fa-comment"></i> Your Feedback</label>
+        <textarea placeholder="Tell us what you think about the website, features, or suggestions for improvement..." 
+                  id="feedbackText" 
+                  required
+                  maxlength="500"></textarea>
+        <div class="char-counter" id="charCounter">
+          <span id="charCount">0</span>/500 characters
+        </div>
+      </div>
+
+      <button type="submit" id="submitBtn">
+        <i class="fas fa-paper-plane"></i>
+        Submit Feedback
+      </button>
     </form>
 
     <div class="back-link">
-      <a href="index.html">← Back to Home</a>
+      <a href="index.html">
+        <i class="fas fa-arrow-left"></i>
+        Back to Home
+      </a>
     </div>
   </div>
 
   <script>
-    function submitFeedback(e) {
+    let selectedRating = 0;
+    let feedbackCount = localStorage.getItem('feedbackCount') || 0;
+
+    // Initialize rating stars
+    const stars = document.querySelectorAll('.star');
+    const ratingInput = document.getElementById('ratingValue');
+    
+    stars.forEach(star => {
+      star.addEventListener('click', () => {
+        const value = parseInt(star.getAttribute('data-value'));
+        selectedRating = value;
+        ratingInput.value = value;
+        
+        // Update star display
+        stars.forEach((s, index) => {
+          if (index < value) {
+            s.classList.add('active');
+            s.innerHTML = '<i class="fas fa-star"></i>';
+          } else {
+            s.classList.remove('active');
+            s.innerHTML = '<i class="fas fa-star"></i>';
+          }
+        });
+      });
+      
+      star.addEventListener('mouseenter', () => {
+        const value = parseInt(star.getAttribute('data-value'));
+        stars.forEach((s, index) => {
+          if (index < value) {
+            s.innerHTML = '<i class="fas fa-star"></i>';
+            s.style.color = '#f59e0b';
+          }
+        });
+      });
+      
+      star.addEventListener('mouseleave', () => {
+        stars.forEach((s, index) => {
+          if (index >= selectedRating) {
+            s.style.color = '';
+            s.innerHTML = '<i class="fas fa-star"></i>';
+          }
+        });
+      });
+    });
+
+    // Character counter for textarea
+    const feedbackText = document.getElementById('feedbackText');
+    const charCounter = document.getElementById('charCounter');
+    const charCount = document.getElementById('charCount');
+    
+    feedbackText.addEventListener('input', () => {
+      const length = feedbackText.value.length;
+      charCount.textContent = length;
+      
+      // Update counter color based on length
+      if (length > 450) {
+        charCounter.classList.add('warning');
+        charCounter.classList.remove('error');
+      } else if (length >= 500) {
+        charCounter.classList.add('error');
+        charCounter.classList.remove('warning');
+      } else {
+        charCounter.classList.remove('warning', 'error');
+      }
+    });
+
+    // Form submission
+    async function submitFeedback(e) {
       e.preventDefault();
-      alert("Thank you for your feedback! ❤️");
-      e.target.reset();
+      
+      const submitBtn = document.getElementById('submitBtn');
+      const successMessage = document.getElementById('successMessage');
+      
+      // Show loading state
+      submitBtn.classList.add('loading');
+      submitBtn.innerHTML = '<i class="fas fa-spinner"></i> Sending...';
+      
+      // Get form data
+      const formData = {
+        name: document.getElementById('userName').value || 'Anonymous',
+        email: document.getElementById('userEmail').value || 'Not provided',
+        rating: selectedRating,
+        feedback: document.getElementById('feedbackText').value,
+        timestamp: new Date().toISOString(),
+        userAgent: navigator.userAgent,
+        page: window.location.href
+      };
+      
+      // Simulate API call delay
+      await new Promise(resolve => setTimeout(resolve, 1500));
+      
+      // Increment feedback count
+      feedbackCount++;
+      localStorage.setItem('feedbackCount', feedbackCount);
+      
+      // Store feedback locally (in a real app, this would be sent to a server)
+      const feedbacks = JSON.parse(localStorage.getItem('feedbacks') || '[]');
+      feedbacks.push(formData);
+      localStorage.setItem('feedbacks', JSON.stringify(feedbacks));
+      
+      // Show success message
+      successMessage.classList.add('show');
+      
+      // Reset button
+      submitBtn.classList.remove('loading');
+      submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Submit Feedback';
+      
+      // Reset form
+      document.getElementById('feedbackForm').reset();
+      selectedRating = 0;
+      ratingInput.value = 0;
+      stars.forEach(star => star.classList.remove('active'));
+      charCount.textContent = '0';
+      charCounter.classList.remove('warning', 'error');
+      
+      // Hide success message after 4 seconds
+      setTimeout(() => {
+        successMessage.classList.remove('show');
+      }, 4000);
+      
+      // Log to console (for demo purposes)
+      console.log('Feedback submitted:', formData);
+      console.log(`Total feedbacks submitted: ${feedbackCount}`);
+      
+      // Optional: Send to a real backend
+      // await fetch('https://your-api-endpoint.com/feedback', {
+      //   method: 'POST',
+      //   headers: {
+      //     'Content-Type': 'application/json',
+      //   },
+      //   body: JSON.stringify(formData)
+      // });
     }
+
+    // Add some visual effects on page load
+    document.addEventListener('DOMContentLoaded', () => {
+      // Animate container entrance
+      const container = document.querySelector('.feedback-container');
+      container.style.opacity = '0';
+      container.style.transform = 'translateY(20px)';
+      
+      setTimeout(() => {
+        container.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        container.style.opacity = '1';
+        container.style.transform = 'translateY(0)';
+      }, 100);
+      
+      // Add focus styles to inputs
+      const inputs = document.querySelectorAll('input, textarea, select');
+      inputs.forEach(input => {
+        input.addEventListener('focus', function() {
+          this.parentElement.style.transform = 'translateY(-2px)';
+        });
+        
+        input.addEventListener('blur', function() {
+          this.parentElement.style.transform = 'translateY(0)';
+        });
+      });
+    });
+
+    // Keyboard shortcuts
+    document.addEventListener('keydown', (e) => {
+      // Ctrl+Enter to submit
+      if (e.ctrlKey && e.key === 'Enter') {
+        document.getElementById('submitBtn').click();
+      }
+      
+      // Escape to clear form
+      if (e.key === 'Escape') {
+        if (confirm('Clear all form fields?')) {
+          document.getElementById('feedbackForm').reset();
+          selectedRating = 0;
+          ratingInput.value = 0;
+          stars.forEach(star => star.classList.remove('active'));
+        }
+      }
+    });
   </script>
 </body>
 </html>

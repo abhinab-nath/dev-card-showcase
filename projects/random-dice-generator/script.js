@@ -1,10 +1,13 @@
-const dice = document.getElementById('dice');
-const rollButton = document.getElementById('roll-button');
+const dice = document.getElementById("dice");
+const rollButton = document.getElementById("roll-button");
+const resultText = document.getElementById("result");
 
-const rollDice = () => {
-    const random = Math.floor(Math.random() * 6) + 1;
-    rotateDice(random);
-};
+function rollDice() {
+  const random = Math.floor(Math.random() * 6) + 1;
+  rotateDice(random);
+  resultText.textContent = `You rolled: ${random}`;
+}
+
 
 const rotateDice = (random) => {
     let x, y;
@@ -27,11 +30,11 @@ const rotateDice = (random) => {
             break;
         case 5:
             x = 0;
-            y = 90;
+            y = -90;
             break;
         case 6:
             x = 0;
-            y = -90;
+            y = 90;
             break;
         default:
             break;

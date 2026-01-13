@@ -146,12 +146,80 @@
         }
       }
     </style>
-  </head>
+</head>
 
-  <body>
-    <!-- NAVBAR -->
-    <nav class="navbar">
-      <div class="nav-logo">🚀 Community</div>
+<body>
+          <div class="circle-container">
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const coords = { x: 0, y: 0 };
+            const circles = document.querySelectorAll(".circle");
+
+            circles.forEach(function (circle) {
+                circle.x = 0;
+                circle.y = 0;
+            });
+
+            window.addEventListener("mousemove", function (e) {
+                coords.x = e.pageX;
+                coords.y = e.pageY - window.scrollY; // Adjust for vertical scroll position
+            });
+
+            function animateCircles() {
+                let x = coords.x;
+                let y = coords.y;
+                circles.forEach(function (circle, index) {
+                    circle.style.left = `${x - 12}px`;
+                    circle.style.top = `${y - 12}px`;
+                    circle.style.transform = `scale(${(circles.length - index) / circles.length})`;
+                    const nextCircle = circles[index + 1] || circles[0];
+                    circle.x = x;
+                    circle.y = y;
+                    x += (nextCircle.x - x) * 0.3;
+                    y += (nextCircle.y - y) * 0.3;
+                });
+
+                requestAnimationFrame(animateCircles);
+            }
+
+            animateCircles();
+        });
+
+    </script>
+<!-- NAVBAR -->
+<nav class="navbar">
+    <div class="nav-logo">🚀 Community</div>
 
       <div class="hamburger" id="hamburger">
         <span></span><span></span><span></span>
@@ -351,7 +419,30 @@
         </div>
       </div>
 
-      <div class="project-card">
+     
+    <div class="project-card">
+        <h2>Number Challenge</h2>
+        <p class="project-desc">
+            A fun and challenging number memory game where players memorize a sequence of numbers and recall them correctly within a limited time. Boosts focus, memory, and concentration.
+        </p>
+        <div class="project-tags">
+            <span>HTML</span>
+            <span>CSS</span>
+            <span>JavaScript</span>
+        </div>
+        <div class="project-links">
+            <a href="./projects/number-challenge/" target="_blank">
+                <i class="fas fa-external-link-alt"></i> Live
+            </a>
+        </div>
+        <div class="project-footer">
+            <span>By</span>
+            <a href="https://github.com/your-github-username" target="_blank">Anvesha</a>
+        </div>
+    </div>
+
+
+    <div class="project-card">
         <h2>Todo List</h2>
         <p class="project-desc">
           A simple and interactive To-Do List application that allows users to
@@ -399,7 +490,30 @@
         </div>
       </div>
 
-      <div class="project-card">
+     
+    <div class="project-card">
+        <h2>Pattern Match</h2>
+        <p class="project-desc">
+            A color-based memory game inspired by the classic Simon game. Players memorize and repeat an increasing sequence of up to 30 dynamic colors, improving focus and visual memory.
+        </p>
+        <div class="project-tags">
+            <span>HTML</span>
+            <span>CSS</span>
+            <span>JavaScript</span>
+        </div>
+        <div class="project-links">
+            <a href="./projects/pattern-match/" target="_blank">
+                <i class="fas fa-external-link-alt"></i> Live
+            </a>
+        </div>
+        <div class="project-footer">
+            <span>By</span>
+            <a href="https://github.com/your-github-username" target="_blank">Anvesha</a>
+        </div>
+    </div>
+
+
+    <div class="project-card">
         <h2>Random Dice Generator</h2>
         <p class="project-desc">
           A simple and interactive dice rolling simulator. Press the button to
@@ -498,7 +612,30 @@
         </div>
       </div>
 
-      <div class="project-card">
+  
+    <div class="project-card">
+        <h2>Word Twist Challenge </h2>
+        <p class="project-desc">
+            A fun and engaging word twist game where players create as many words as possible
+            from a given set of letters within a time limit. Features scoring, hints, and a leaderboard.
+        </p>
+        <div class="project-tags">
+            <span>HTML</span>
+            <span>CSS</span>
+            <span>JavaScript</span>
+        </div>
+        <div class="project-links">
+            <a href="./projects/word-twist-challenge/index.html" target="_blank">
+                <i class="fas fa-external-link-alt"></i> Live
+            </a>
+        </div>
+        <div class="project-footer">
+            <span>By</span>
+            <a href="https://github.com/omkarhole" target="_blank">Omkar</a>
+        </div>
+    </div>
+
+    <div class="project-card">
         <h2>KeyCode Reveal</h2>
         <p class="project-desc">
           A web application that displays the keycode, key name, and other
@@ -521,7 +658,28 @@
           <span>By</span>
           <a href="https://github.com/neeru24" target="_blank">Neeru</a>
         </div>
-      </div>
+       
+    </div>
+     <div class="project-card">
+        <h2>Mini Geo Guesser </h2>
+        <p class="project-desc">
+            A fun geography game where players guess locations based on images and clues, testing their knowledge of world geography.
+        </p>
+        <div class="project-tags">
+            <span>HTML</span>
+            <span>CSS</span>
+            <span>JavaScript</span>
+        </div>
+        <div class="project-links">
+            <a href="./projects/Mini Geo Guesser/index.html" target="_blank">
+                <i class="fas fa-external-link-alt"></i> Live
+            </a>
+        </div>
+        <div class="project-footer">
+            <span>By</span>
+            <a href="https://github.com/omkarhole" target="_blank">Omkar</a>
+        </div>
+    </div>
 
       <div class="project-card">
         <h2>Simple Interest Calculator</h2>
@@ -543,7 +701,29 @@
           <span>By</span>
           <a href="https://github.com/omkarhole" target="_blank">Omkar</a>
         </div>
-      </div>
+     
+    </div>
+     <div class="project-card">
+        <h2>IF Else Decision Simulator </h2>
+        <p class="project-desc">
+            A web application that simulates decision-making using if-else statements.
+            Users can input conditions and see the corresponding outcomes based on their inputs.
+        </p>
+        <div class="project-tags">
+            <span>HTML</span>
+            <span>CSS</span>
+            <span>JavaScript</span>
+        </div>
+        <div class="project-links">
+            <a href="./projects/If-Else_Decision_Simulator/index.html" target="_blank">
+                <i class="fas fa-external-link-alt"></i> Live
+            </a>
+        </div>
+        <div class="project-footer">
+            <span>By</span>
+            <a href="https://github.com/omkarhole" target="_blank">Omkar</a>
+        </div>
+    </div>
 
       <div class="project-card">
         <h2>Chess Game</h2>
@@ -567,7 +747,29 @@
         </div>
       </div>
 
-      <div class="project-card">
+      
+     <div class="project-card">
+        <h2>Keyboard Key Detector</h2>
+        <p class="project-desc">
+                A simple QR code generator that allows users to create QR codes for URLs, text, or other data.
+            </p>
+        <div class="project-tags">
+            <span>HTML</span>
+            <span>CSS</span>
+            <span>JavaScript</span>
+        </div>
+        <div class="project-links">
+            <a href="./projects/keyboard-key-detector/index.html" target="_blank">
+                <i class="fas fa-external-link-alt"></i> Live
+            </a>
+        </div>
+        <div class="project-footer">
+            <span>By</span>
+            <a href="https://github.com/omkar" target="_blank">Omkar</a>
+        </div>
+    </div>
+
+    <div class="project-card">
         <h2>Memory Card Flip Game</h2>
         <p class="project-desc">
           A fun memory card flip game where players match pairs of cards by
@@ -587,7 +789,29 @@
           <span>By</span>
           <a href="https://github.com/neeru24" target="_blank">Neeru</a>
         </div>
-      </div>
+      
+    </div>
+    <div class="project-card">
+        <h2>Gradent Pattern </h2>
+        <p class="project-desc">
+            A web application that generates random gradient patterns for backgrounds,
+            allowing users to copy the CSS code for use in their own projects.
+        </p>
+        <div class="project-tags">
+            <span>HTML</span>
+            <span>CSS</span>
+            <span>JavaScript</span>
+        </div>
+        <div class="project-links">
+            <a href="./projects/GradientPattern/index.html" target="_blank">
+                <i class="fas fa-external-link-alt"></i> Live
+            </a>
+        </div>
+        <div class="project-footer">
+            <span>By</span>
+            <a href="https://github.com/omkar" target="_blank">Omkar</a>
+        </div>
+    </div>
 
       <div class="project-card">
         <h2>QR code Generator</h2>
@@ -609,7 +833,29 @@
           <span>By</span>
           <a href="https://github.com/omkar" target="_blank">Omkar</a>
         </div>
-      </div>
+      
+    </div>
+    <div class="project-card">
+        <h2>Git Commit App</h2>
+        <p class="project-desc">
+            A web application that allows users to create and manage git commits
+            with a user-friendly interface and essential git functionalities.
+        </p>
+        <div class="project-tags">
+            <span>HTML</span>
+            <span>CSS</span>
+            <span>JavaScript</span>
+        </div>
+        <div class="project-links">
+            <a href="./projects/GitCommit/index.html" target="_blank">
+                <i class="fas fa-external-link-alt"></i> Live
+            </a>
+        </div>
+        <div class="project-footer">
+            <span>By</span>
+            <a href="https://github.com/omkarhole" target="_blank">Omkar</a>
+        </div>
+    </div>
 
       <div class="project-card">
         <h2>SQL Query Visualizer</h2>
@@ -633,7 +879,30 @@
         </div>
       </div>
 
-      <div class="project-card">
+     
+    <div class="project-card">
+            <h2>Github User Finder</h2>
+            <p class="project-desc">
+                A web application that allows users to search for GitHub profiles
+                and view their details including repositories, followers, and more.
+            </p>
+            <div class="project-tags">
+                <span>HTML</span>
+                <span>CSS</span>
+                <span>JavaScript</span>
+            </div>
+            <div class="project-links">
+                <a href="./projects/gitHub-user-finder/index.html" target="_blank">
+                    <i class="fas fa-external-link-alt"></i> Live
+                </a>
+            </div>
+            <div class="project-footer">
+                <span>By</span>
+                <a href="https://github.com/omkarhole" target="_blank">Omkar</a>
+            </div>
+        </div>
+
+    <div class="project-card">
         <h2>Number Guessing Game</h2>
         <p class="project-desc">
           An interactive number guessing game where users try to guess a secret
@@ -658,8 +927,30 @@
           <a href="https://github.com/Sneha-Amballa" target="_blank"
             >Amballa Sneha</a
           >
-        </div>
+        
       </div>
+    </div>
+      <div class="project-card">
+        <h2>GIF Search App</h2>
+        <p class="project-desc">
+            A web application that allows users to search for and view GIFs using the Giphy API.
+        </p>
+        <div class="project-tags">
+            <span>HTML</span>
+            <span>CSS</span>
+            <span>JavaScript</span>
+        </div>
+        <div class="project-links">
+            <a href="./projects/gif-search/index.html" target="_blank">
+                <i class="fas fa-external-link-alt"></i> Live
+            </a>
+        </div>
+        <div class="project-footer">
+            <span>By</span>
+            <a href="https://github.com/omkarhole" target="_blank">Omkar</a>
+        </div>
+    </div>
+
 
       <div class="project-card">
         <h2>Pathfinding Visualizer</h2>
@@ -682,7 +973,28 @@
           <span>By</span>
           <a href="https://github.com/omkarhole" target="_blank">Omkar</a>
         </div>
-      </div>
+     
+    </div>
+    <div class="project-card">
+        <h2>Drag and Drop List </h2>
+        <p class="project-desc">
+            A web application that allows users to create a list of items and reorder them using drag-and-drop functionality.
+        </p>
+        <div class="project-tags">
+            <span>HTML</span>
+            <span>CSS</span>
+            <span>JavaScript</span>
+        </div>
+        <div class="project-links">
+            <a href="./projects/DragAndDropList/index.html" target="_blank">
+                <i class="fas fa-external-link-alt"></i> Live
+            </a>
+        </div>
+        <div class="project-footer">
+            <span>By</span>
+            <a href="https://github.com/omkarhole" target="_blank">Omkar</a>
+        </div>
+    </div>
 
       <div class="project-card">
         <h2>Typing speed test</h2>
@@ -706,6 +1018,48 @@
           <a href="https://github.com/omkarhole" target="_blank">Omkar</a>
         </div>
       </div>
+    
+     <div class="project-card">
+        <h2>Digital Clock </h2>
+        <p class="project-desc">
+            A digital clock that displays the current time with hours, minutes, and seconds.
+        </p>
+        <div class="project-tags">
+            <span>HTML</span>
+            <span>CSS</span>
+            <span>JavaScript</span>
+        </div>
+        <div class="project-links">
+            <a href="./projects/digital-clock/index.html" target="_blank">
+                <i class="fas fa-external-link-alt"></i> Live
+            </a>
+        </div>
+        <div class="project-footer">
+            <span>By</span>
+            <a href="https://github.com/omkarhole" target="_blank">Omkar</a>
+        </div>
+    </div>
+
+        <div class="project-card">
+        <h2>Font Styler</h2>
+        <p class="project-desc">
+Convert input text into styled or fancy Unicode fonts for social media with one-click copy.
+        </p>
+        <div class="project-tags">
+            <span>HTML</span>
+            <span>CSS</span>
+            <span>JavaScript</span>
+        </div>
+        <div class="project-links">
+            <a href="./projects/Font/index.html" target="_blank">
+                <i class="fas fa-external-link-alt"></i> Live
+            </a>
+        </div>
+        <div class="project-footer">
+            <span>By</span>
+            <a href="https://github.com/neeru24" target="_blank">Neeru</a>
+        </div>
+    </div>
 
       <div class="project-card">
         <h2>Password Strength Checker</h2>
@@ -793,6 +1147,94 @@
           const nameA = a.querySelector("h2").innerText.toLowerCase();
           const nameB = b.querySelector("h2").innerText.toLowerCase();
           return sortSelect.value === "az"
+            <span>By</span>
+            <a href="https://github.com/omkarhole" target="_blank">Omkar</a>
+        </div>
+    </div>
+    <div class="project-card">
+        <h2>Canvas Drawing App</h2>
+        <p class="project-desc">
+            A simple canvas drawing application that allows users to draw, change colors,
+            and save their artwork.
+        </p>
+        <div class="project-tags">
+            <span>HTML</span>
+            <span>CSS</span>
+            <span>JavaScript</span>
+        </div>
+        <div class="project-links">
+            <a href="./projects/Canvas/index.html" target="_blank">
+                <i class="fas fa-external-link-alt"></i> Live
+            </a>
+        </div>
+        <div class="project-footer">
+            <span>By</span>
+            <a href="https://github.com/omkarhole" target="_blank">Omkar</a>
+        </div>
+    </div>
+
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <p>© 2026 Community Hall of Fame</p>
+    <p>Built with ❤️ by the Open Source Community</p>
+</footer>
+
+<script>
+// Navbar Hamburger Menu
+const hamburger = document.getElementById("hamburger");
+const navLinks = document.getElementById("navLinks");
+
+hamburger.addEventListener("click", () => {
+    navLinks.classList.toggle("active");
+});
+
+// View Toggle
+const viewToggleBtn = document.getElementById("viewToggleBtn");
+const projectsContainer = document.querySelector(".projects-container");
+
+let isCompact = false;
+
+viewToggleBtn.addEventListener("click", () => {
+    isCompact = !isCompact;
+    projectsContainer.classList.toggle("compact-view");
+    
+    viewToggleBtn.innerHTML = isCompact
+        ? '<i class="fas fa-th-list"></i>'
+        : '<i class="fas fa-th-large"></i>';
+});
+
+// Search, Filter, and Sort
+const searchInput = document.getElementById("searchInput");
+const filterButtons = document.querySelectorAll(".filter-btn");
+const sortSelect = document.getElementById("sortSelect");
+const projects = Array.from(document.querySelectorAll(".project-card"));
+
+let activeFilter = "all";
+
+// 🔍 Search
+searchInput.addEventListener("input", () => {
+    const query = searchInput.value.toLowerCase();
+    filterProjects(query, activeFilter);
+});
+
+// 🏷 Filter
+filterButtons.forEach(btn => {
+    btn.addEventListener("click", () => {
+        filterButtons.forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        activeFilter = btn.dataset.tech;
+        filterProjects(searchInput.value.toLowerCase(), activeFilter);
+    });
+});
+
+// 🔃 Sort
+sortSelect.addEventListener("change", () => {
+    const sorted = projects.sort((a, b) => {
+        const nameA = a.querySelector("h2").innerText.toLowerCase();
+        const nameB = b.querySelector("h2").innerText.toLowerCase();
+        return sortSelect.value === "az"
             ? nameA.localeCompare(nameB)
             : nameB.localeCompare(nameA);
         });
