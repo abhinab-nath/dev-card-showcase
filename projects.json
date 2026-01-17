@@ -1502,6 +1502,24 @@
     "name": "PavanKarthik",
     "github": "https://github.com/pavanakarthik12"
   }
+},
+{
+  "title": "Exam Stress Awareness 🌱",
+  "description": "An educational page that helps students understand exam stress and manage anxiety healthily.",
+  "tags": [
+    "HTML",
+    "CSS",
+    "JavaScript",
+    "Awareness",
+    "Student Wellness"
+  ],
+  "links": {
+    "live": "./projects/exam-stress-awareness/index.html"
+  },
+  "author": {
+    "name": "Sneha Amballa",
+    "github": "https://github.com/your-github-username"
+  }
 }
 
 ]
