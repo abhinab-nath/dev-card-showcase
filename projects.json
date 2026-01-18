@@ -276,23 +276,6 @@
                    }
     },
     {
-    "title": "Daily Planner",
-    "description": "A simple and user-friendly daily planner that allows users to create, manage, and track tasks for a single day. It supports marking tasks as completed or pending and provides a one-click daily reset for a fresh start, helping users practice basic CRUD operations and frontend state management.",
-    "tags": [
-        "HTML",
-        "CSS",
-        "JavaScript"
-    ],
-    "links": {
-        "live": "./projects/daily-planner/"
-    },
-    "author": {
-        "name": "Anvesha",
-        "github": "https://github.com/your-github-username"
-    }
-    },
-
-    {
         "title":  "Basket Ball Game",
         "description":  "A 3D basketball shooting game built with Three.js and Cannon.js where players can aim and shoot basketballs into a hoop, keeping track of their score and time.",
         "tags":  [
@@ -1561,14 +1544,14 @@
     "Creative Coding",
     "Grid"
   ],
-  "links": {
-    "live": "./projects/sketchgrid/index.html"
-  },
-  "author": {
-    "name": "PavanKarthik",
-    "github": "https://github.com/pavanakarthik12"
-  }
-},
+    "links": {
+        "live": "./projects/sketchgrid/index.html"
+    },
+    "author": {
+        "name": "PavanKarthik",
+        "github": "https://github.com/pavanakarthik12"
+    }
+ },
 {
   "title": "Digital Burnout Awareness 🔥",
   "description": "An awareness page that explains digital burnout, its symptoms, causes, and simple prevention tips.",
@@ -1692,6 +1675,25 @@
   ],
   "links": {
     "live": "./projects/virtual-mistakes-museum/index.html"
+  },
+  "author": {
+    "name": "Sneha Amballa",
+    "github": "https://github.com/your-github-username"
+  }
+},
+{
+  "title": "Retro Pixel Habit Tracker 🌱",
+  "description": "A gamified habit tracker that grows a pixel character as habits are completed.",
+  "tags": [
+    "HTML",
+    "CSS",
+    "JavaScript",
+    "Gamification",
+    "Productivity",
+    "Retro UI"
+  ],
+  "links": {
+    "live": "./projects/retro-pixel-habit-tracker/index.html"
   },
   "author": {
     "name": "Sneha Amballa",
