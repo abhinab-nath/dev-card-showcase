@@ -1520,6 +1520,8 @@
   }
 },
 {
+  "title": "Digital Burnout Awareness 🔥",
+  "description": "An awareness page that explains digital burnout, its symptoms, causes, and simple prevention tips.",
   "title": "Weekly Productivity Reflection 📝",
   "description": "A calm reflection page that helps users review their weekly productivity and identify improvements.",
   "title": "Productivity Myths: Myth vs Fact 🧠",
@@ -1563,6 +1565,11 @@
     "HTML",
     "CSS",
     "Awareness",
+    "Mental Health",
+    "Digital Wellbeing"
+  ],
+  "links": {
+    "live": "./projects/digital-burnout-awareness/index.html"
     "Digital Wellbeing",
     "Health"
   ],
