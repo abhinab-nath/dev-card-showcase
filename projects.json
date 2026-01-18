@@ -114,6 +114,22 @@
                    }
     },
     {
+        "title":  "Mini Geo Guesser",
+        "description":  "A fun game where you have to guess a location off of famous landscape pictures shown to you along with some hints ",
+        "tags":  [
+                     "HTML",
+                     "CSS",
+                     "JavaScript"
+                 ],
+        "links":  {
+                      "live":  "./projects/Enhanced geo guesser/index.html"
+                  },
+        "author":  {
+                       "name":  "CodeMaster",
+                       "github":  "https://github.com/CodeMaster11000"
+                   }
+    },
+    {
         "title":  "Smart Progress Tracker",
         "description":  "A smart progress tracking tool that helps users monitor tasks and goals using dynamic progress bars, priority levels, due dates, and persistent storage, all presented in a clean card-based interface.",
         "tags":  [
@@ -1515,6 +1531,17 @@
   ],
   "links": {
     "live": "./projects/digital-burnout-awareness/index.html"
+  "title": "Visual Daily Routine Planner ⏰",
+  "description": "A modern, student-friendly daily planner with time blocks, editable tasks, and clean UI.",
+  "tags": [
+    "HTML",
+    "CSS",
+    "JavaScript",
+    "UI/UX",
+    "Productivity"
+  ],
+  "links": {
+    "live": "./projects/daily-routine-planner/index.html"
   },
   "author": {
     "name": "Sneha Amballa",
