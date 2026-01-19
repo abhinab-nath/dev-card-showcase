@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Recipe Haven</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="hero">
+    <h1>🍜 Recipe Haven</h1>
+    <p>Find delicious dishes in seconds</p>
+
+    <div class="search-area">
+      <input id="searchInput" type="text" placeholder="Search by ingredient or dish...">
+      <button onclick="searchRecipes()">Search</button>
+      <button class="fav-btn" onclick="showFavorites()">❤️ Favorites</button>
+    </div>
+  </header>
+
+  <section class="section">
+    <h2 id="sectionTitle">🍽️ Dishes</h2>
+    <div id="recipes" class="cards"></div>
+  </section>
+
+  <!-- Modal -->
+    <div id="modal" class="modal">
+    <div class="modal-box">
+        <span class="close" onclick="closeModal()">×</span>
+        <div id="modalContent"></div>
+    </div>
+    </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
