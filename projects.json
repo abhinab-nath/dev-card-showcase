@@ -3957,6 +3957,8 @@
   }
 },
 {
+    "title": "Brick Breaker Arcade Game",
+    "description": "A classic Brick Breaker arcade game featuring paddle and ball physics, multi-level brick layouts, power-ups, and score tracking built using HTML Canvas.",
     "title": "Retro Snake Game",
     "description": "A classic retro-style Snake game built using HTML Canvas with pixel-inspired visuals, keyboard controls, increasing difficulty, and a scoring system for an engaging learning experience.",
     "tags": [
@@ -3968,6 +3970,7 @@
         "Retro"
     ],
     "links": {
+        "live": "https://your-username.github.io/dev-card-showcase/games/brick-breaker/"
         "live": "https://your-username.github.io/dev-card-showcase/games/snake/"
     },
     "author": {
