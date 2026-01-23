@@ -103,6 +103,24 @@
             "github": "https://github.com/omkarhole"
         }
     },
+      {
+        "title": "checkers game",
+        "description": "A classic checkers game with two-player mode, valid move enforcement, kinging, and a clean user interface for an enjoyable gaming experience.",
+        "tags": [
+            "HTML",
+            "CSS",
+            "JavaScript"
+            
+           
+        ],
+        "links": {
+            "live": "./projects/checkers/index.html"
+        },
+        "author": {
+            "name": "Omkar",
+            "github": "https://github.com/omkarhole"
+        }
+    },
     {
         "title": "PDF Watermark Tool",
         "description": "Browser-based tool to add text/image watermarks to PDFs with full customization. Process files locally for privacy.",
@@ -133,6 +151,22 @@
         ],
         "links": {
             "live": "./projects/notepad/index.html"
+        },
+        "author": {
+            "name": "Omkar",
+            "github": "https://github.com/omkarhole"
+        }
+    },
+       {
+        "title": "Untangle Puzzle Game",
+        "description": "An engaging untangle puzzle game where players must rearrange interconnected nodes to eliminate overlapping lines. Features multiple difficulty levels, timer, and move counter for an immersive experience.",
+        "tags": [
+            "HTML",
+            "CSS",
+            "JavaScript"
+        ],
+        "links": {
+            "live": "./projects/untangle/index.html"
         },
         "author": {
             "name": "Omkar",
@@ -200,6 +234,22 @@
         ],
         "links": {
             "live": "./projects/dungeon-escape/index.html"
+        },
+        "author": {
+            "name": "Omkar",
+            "github": "https://github.com/omkarhole"
+        }
+    },
+      {
+        "title": "kinetic loader",
+        "description": "interactive kinetic loader animation.",
+        "tags": [
+            "HTML",
+            "CSS",
+            "JavaScript"
+        ],
+        "links": {
+            "live": "./projects/kinetic-loader/index.html"
         },
         "author": {
             "name": "Omkar",
@@ -3733,7 +3783,7 @@
             "github": "https://github.com/Sneha-Amballa"
         }
     },
-
+/// Bubbble Ppop Blitzzzzzzzzzzzz
     {
         "title": "Bubble Pop Blitz",
         "description": "Timed click-to-pop accuracy challenge where you pop as many drifting bubbles as you can before the 30-second timer ends.",
