@@ -181,6 +181,22 @@
             "github": "https://github.com/neeru24"
         }
     },
+    {
+        "title": "Dice Roller",
+        "description": "A simple and interactive dice rolling simulator. Press the button to roll the dice and get a random number from 1 to 6.",
+        "tags": [
+            "HTML",
+            "CSS",
+            "JavaScript"
+        ],
+        "links": {
+            "live": "./projects/dice-roller/index.html"
+        },
+        "author": {
+            "name": "Neeru",
+            "github": "https://github.com/neeru24"
+        }
+    },
      {
         "title": "Interactive Periodic Table",
         "description": "An interactive periodic table that provides detailed information about each element, including atomic number, symbol, atomic mass, and electron configuration. Features search functionality and responsive design for easy access on all devices.",
