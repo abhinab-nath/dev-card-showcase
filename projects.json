@@ -197,6 +197,22 @@
             "github": "https://github.com/neeru24"
         }
     },
+        {
+        "title": "Binary Hex Convertor",
+        "description": "A simple and interactive binary to hexadecimal converter with real-time conversion and validation.",
+        "tags": [
+            "HTML",
+            "CSS",
+            "JavaScript"
+        ],
+        "links": {
+            "live": "./projects/BinaryHexConvertor/index.html"
+        },
+        "author": {
+            "name": "Neeru",
+            "github": "https://github.com/neeru24"
+        }
+    },
      {
         "title": "Interactive Periodic Table",
         "description": "An interactive periodic table that provides detailed information about each element, including atomic number, symbol, atomic mass, and electron configuration. Features search functionality and responsive design for easy access on all devices.",
