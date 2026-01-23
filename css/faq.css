@@ -555,3 +555,14 @@
         text-transform: uppercase;
         letter-spacing: 0.5px;
     }
+
+    /* Improve FAQ readability on browser zoom out */
+.faq-card {
+  min-width: 280px;
+}
+
+.faq-card p,
+.faq-card li {
+  font-size: 1rem;
+  line-height: 1.6;
+}
