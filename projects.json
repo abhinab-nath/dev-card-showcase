@@ -190,7 +190,7 @@
             "name": "Neeru",
             "github": "https://github.com/neeru24"
         }
-    },
+    },{
     "title": "PDF Watermark Tool",
     "description": "Browser-based tool to add text/image watermarks to PDFs with full customization. Process files locally for privacy.",
     "tags": [
@@ -271,8 +271,8 @@
     "name": "Omkar",
     "github": "https://github.com/omkarhole"
   }
-}
-
+},
+{
         "title": "CI-CD Pipeline Simulator",
         "description": "A web application that simulates a Continuous Integration and Continuous Deployment (CI-CD) pipeline. Users can visualize the stages of code integration, testing, and deployment in a simplified manner.",
         "tags": [
@@ -4293,16 +4293,8 @@
   }
 },
 {
-    "title": "Top-Down Retro Racing Game",
-    "description": "A top-down arcade-style racing game where players control a car, avoid obstacles, and survive as long as possible using continuous animation and increasing difficulty mechanics.",
-    "title": "Simplified Tetris Game",
-    "description": "A simplified Tetris-style puzzle game featuring falling blocks, rotation mechanics, row-clearing logic, and game over detection built using HTML Canvas.",
-    "title": "Two-Player Neon Pong",
-    "description": "A classic two-player Pong game with neon retro visuals, keyboard-controlled paddles, ball physics, collision detection, and score tracking built using HTML Canvas.",
-    "title": "Brick Breaker Arcade Game",
+    "title": "Brick Breaker Game",
     "description": "A classic Brick Breaker arcade game featuring paddle and ball physics, multi-level brick layouts, power-ups, and score tracking built using HTML Canvas.",
-    "title": "Retro Snake Game",
-    "description": "A classic retro-style Snake game built using HTML Canvas with pixel-inspired visuals, keyboard controls, increasing difficulty, and a scoring system for an engaging learning experience.",
     "tags": [
         "HTML",
         "CSS",
@@ -4310,13 +4302,9 @@
         "Canvas",
         "Game",
         "Retro",
-        "Racing"
-        "Puzzle"
+        "Racing",
+        "Puzzle",
         "Multiplayer"
-    ],
-    "links": {
-        "live": "#"
-        "Retro"
     ],
     "links": {
         "live": "https://your-username.github.io/dev-card-showcase/games/brick-breaker/"
@@ -4463,7 +4451,10 @@
     "name": "PavanKarthik",
     "github": "https://github.com/pavanakarthik12"
   }
-}
+},
+{
+     "title": "ClipStream – Non-Linear Editor",
+  "description": "A browser-based non-linear video editing interface built with Vanilla JavaScript. Features a multi-track magnetic timeline, playhead synchronization engine, keyframe graph editor, and project serialization.",
 
         "tags": [
             "HTML",
@@ -4480,137 +4471,185 @@
             "name": "Sai",
             "github": "https://github.com/saiusesgithub"
         }
-    }
-{
+    },
+    {
     "title": "Typing Words Arcade Game",
     "description": "A retro-style typing game where words fall from the top of the screen and players must type them correctly before they reach the bottom, featuring scoring, combos, and increasing difficulty.",
+    "tags": [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "Canvas",
+      "Game",
+      "Retro",
+      "Typing"
+    ],
+    "links": {
+      "live": "#"
+    },
+    "author": {
+      "name": "Amballa Sneha",
+      "github": "https://github.com/Sneha-Amballa"
+    }
+  },
+  {
     "title": "Flappy Bird Retro Game",
     "description": "A Flappy Bird–style retro arcade game featuring gravity-based movement, keyboard-controlled jumps, random pipe generation, and distance-based scoring built using HTML Canvas.",
+    "tags": [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "Canvas",
+      "Game",
+      "Retro"
+    ],
+    "links": {
+      "live": "#"
+    },
+    "author": {
+      "name": "Amballa Sneha",
+      "github": "https://github.com/Sneha-Amballa"
+    }
+  },
+  {
     "title": "Maze Collector Retro Game",
     "description": "A grid-based retro maze game where players collect items, avoid enemies, and score points using keyboard controls, inspired by classic Pac-Man-style gameplay.",
     "tags": [
-        "HTML",
-        "CSS",
-        "JavaScript",
-        "Canvas",
-        "Game",
-        "Retro",
-        "Typing"
-        "Retro"
-        "Retro",
-        "Maze"
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "Retro",
+      "Maze",
+      "Game"
     ],
     "links": {
-        "live": "#"
+      "live": "#"
     },
     "author": {
-        "name": "Amballa Sneha",
-        "github": "https://github.com/Sneha-Amballa"
+      "name": "Amballa Sneha",
+      "github": "https://github.com/Sneha-Amballa"
     }
-},
-{
-  "title": "instinctengine",
-  "description": "instinctengine is an interactive simulation that demonstrates instinct-based decision making. It shows how simple reactive rules can produce complex behavior using pure HTML, CSS, and JavaScript.",
-  "title": "voidrun",
-  "description": "voidrun is a fast-paced endless runner game set in a minimal void environment. It challenges players to react quickly and survive increasing difficulty using pure HTML, CSS, and JavaScript.",
-  "tags": [
-    "HTML",
-    "CSS",
-    "JavaScript",
-    "Simulation",
-    "Behavior"
-  ],
-  "links": {
-    "live": "./projects/instinctengine/index.html"
-    "Game",
-    "Endless Runner"
-  ],
-  "links": {
-    "live": "./projects/voidrun/index.html"
   },
-  "author": {
-    "name": "PavanKarthik",
-    "github": "https://github.com/pavanakarthik12"
-  }
-},
-{
+  {
+    "title": "instinctengine",
+    "description": "An interactive simulation that demonstrates instinct-based decision making, showing how simple reactive rules can produce complex behavior.",
+    "tags": [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "Simulation",
+      "Behavior"
+    ],
+    "links": {
+      "live": "./projects/instinctengine/index.html"
+    },
+    "author": {
+      "name": "PavanKarthik",
+      "github": "https://github.com/pavanakarthik12"
+    }
+  },
+  {
+    "title": "voidrun",
+    "description": "A fast-paced endless runner game set in a minimal void environment that challenges players to react quickly as difficulty increases.",
+    "tags": [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "Game",
+      "Endless Runner"
+    ],
+    "links": {
+      "live": "./projects/voidrun/index.html"
+    },
+    "author": {
+      "name": "PavanKarthik",
+      "github": "https://github.com/pavanakarthik12"
+    }
+  },
+  {
     "title": "neuromaze",
-    "description": "NeuroMaze is an interactive maze-solving simulation inspired by neural and adaptive behavior.",
+    "description": "An interactive maze-solving simulation inspired by neural and adaptive behavior.",
     "tags": [
-        "HTML",
-        "CSS",
-        "JavaScript",
-        "Neural Network",
-        "Maze"
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "Neural Network",
+      "Maze"
     ],
     "links": {
-        "live": "./projects/neuromaze/index.html"
+      "live": "./projects/neuromaze/index.html"
     },
     "author": {
-        "name": "PavanKarthik",
-        "github": "https://github.com/pavanakarthik12"
-    "title":"stateflowjs",
-    "description":"A JavaScript library for creating state machines. It provides a simple and intuitive way to define and work with state machines in your JavaScript applications.",
-    "tags":[
-        "JavaScript",
-        "State Machine",
-        "Library"
-    ],
-    "links":{
-        "live":"./projects/stateflowjs/index.html"
-    },
-    "author":{
-        "name":"PavanKarthik",
-        "github":"https://github.com/pavanakarthik12"
+      "name": "PavanKarthik",
+      "github": "https://github.com/pavanakarthik12"
     }
-}
-
-{
+  },
+  {
+    "title": "stateflowjs",
+    "description": "A JavaScript library for creating state machines with a simple and intuitive API.",
+    "tags": [
+      "JavaScript",
+      "State Machine",
+      "Library"
+    ],
+    "links": {
+      "live": "./projects/stateflowjs/index.html"
+    },
+    "author": {
+      "name": "PavanKarthik",
+      "github": "https://github.com/pavanakarthik12"
+    }
+  },
+  {
     "title": "2dshooter",
-    "description": "A 2D shooter game built with HTML, CSS, and JavaScript. Features a simple shooting mechanic, enemy AI, and a scoring system.",
+    "description": "A 2D shooter game featuring simple shooting mechanics, enemy AI, and a scoring system.",
     "tags": [
-        "HTML",
-        "CSS",
-        "JavaScript",
-        "Game"
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "Game"
     ],
     "links": {
-        "live": "./projects/2dshooter/index.html"
+      "live": "./projects/2dshooter/index.html"
     },
     "author": {
-        "name": "PavanKarthik",
-        "github": "https://github.com/pavanakarthik12"
+      "name": "PavanKarthik",
+      "github": "https://github.com/pavanakarthik12"
     }
-},
-{
+  },
+  {
     "title": "microfps",
-    "description": "A micro-fps game built with HTML, CSS, and JavaScript. Features a simple shooting mechanic, enemy AI, and a scoring system.",
+    "description": "A micro FPS game with basic shooting mechanics, enemy AI, and scoring.",
     "tags": [
-        "HTML",
-        "CSS",
-        "JavaScript",
-        "Game"
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "Game"
     ],
     "links": {
-        "live": "./projects/microfps/index.html"
+      "live": "./projects/microfps/index.html"
     },
     "author": {
-        "name": "PavanKarthik",
-        "github": "https://github.com/pavanakarthik12"
-    "title": "guitarjs",
-    "description": "A JavaScript library for creating guitar tablatures. It provides a simple and intuitive way to define and work with guitar tablatures in your JavaScript applications.",
-    "tags": [
-        "JavaScript",
-        "Guitar Tablature",
-        "Library"
-    ],
-    "links":{
-        "live":"./projects/guitarjs/index.html"
-    },
-    "author":{
-        "name":"PavanKarthik",
-        "github":"https://github.com/pavanakarthik12"
+      "name": "PavanKarthik",
+      "github": "https://github.com/pavanakarthik12"
     }
-}
-
+  },
+  {
+    "title": "guitarjs",
+    "description": "A JavaScript library for creating guitar tablatures with an easy-to-use structure.",
+    "tags": [
+      "JavaScript",
+      "Guitar",
+      "Library"
+    ],
+    "links": {
+      "live": "./projects/guitarjs/index.html"
+    },
+    "author": {
+      "name": "PavanKarthik",
+      "github": "https://github.com/pavanakarthik12"
+    }
+  }
 ]
+
+
