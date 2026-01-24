@@ -49,6 +49,22 @@
             "github": "https://github.com/neeru24"
         }
     },
+            {
+        "title": "Code Snippet Manager",
+        "description": "A web application that allows users to save, organize, and manage code snippets in various programming languages. Features include syntax highlighting, categorization, and search functionality for easy retrieval of snippets.",
+        "tags": [
+            "HTML",
+            "CSS",
+            "JavaScript"
+        ],
+        "links": {
+            "live": "./projects/code-snippet-manager/index.html"
+        },
+        "author": {
+            "name": "Neeru",
+            "github": "https://github.com/neeru24"
+        }
+    },
     {
         "title": "Physics Sandbox",
         "description": "A physics simulation sandbox with interactive controls and visualizations.",
