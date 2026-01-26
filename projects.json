@@ -772,19 +772,24 @@
         }
     },
     {
-        "title": "Dragon Escape Game",
-        "description": "An exciting endless runner game where players control a dragon to escape a dungeon, avoiding obstacles and collecting treasures. Features increasing speed and score tracking for added challenge.",
+        "title": "Dungeon Escape",
+        "description": "A grid-based dungeon escape game where players navigate through a maze, collect keys to unlock doors, avoid traps and enemies, and reach the exit. Features turn-based movement with WASD controls and increasing difficulty levels.",
         "tags": [
             "HTML",
             "CSS",
-            "JavaScript"
+            "JavaScript",
+            "Game",
+            "Canvas",
+            "Grid",
+            "Puzzle",
+            "RPG"
         ],
         "links": {
-            "live": "./projects/dungeon-escape/index.html"
+            "live": "./projects/dungeon-escape/"
         },
         "author": {
-            "name": "Omkar",
-            "github": "https://github.com/omkarhole"
+            "name": "Sneha-Amballa",
+            "github": "https://github.com/Sneha-Amballa"
         }
     },
     {
