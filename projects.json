@@ -5801,6 +5801,15 @@
     }
 },
 {
+    "title": "Ghostnet",
+    "description": "A JavaScript library for creating ghost animations. It provides a simple and intuitive way to define and work with ghost animations in your JavaScript applications.",
+    "tags": [
+        "JavaScript",
+        "Ghost Animation",
+        "Library"
+    ],
+    "links": {
+        "live": "./projects/ghostnet/index.html"
     "title" : "Typemorph",
     "description": "A JavaScript library for creating typewriter-style animations. It provides a simple and intuitive way to define and work with typewriter-style animations in your JavaScript applications.",
     "tags": [
