@@ -327,6 +327,23 @@
             "github": "https://github.com/omkarhole"
         }
     },
+    {
+        "title": "All-Type Calculator",
+        "description": "A modern, interactive calculator supporting all common operations, square roots, exponents, and percentages. Features a sleek card-based UI with a dynamic history panel showing the latest 5 calculations, providing an intuitive and visually engaging experience.",
+        "tags": [
+            "HTML",
+            "CSS",
+            "JavaScript",
+            "UI/UX"
+        ],
+        "links": {
+            "live": "./projects/all-type-calculator/"
+        },
+        "author": {
+            "name": "Anvesha",
+            "github": "https://github.com/your-github-username"
+        }
+        },
      {
         "title": "Fading snake game",
         "description": "Simple Fading snake game.",
