@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Linked List Visualizer</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #0f172a;
+      color: #e5e7eb;
+      padding: 20px;
+      text-align: center;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+    }
+
+    .controls {
+      margin-bottom: 20px;
+    }
+
+    input {
+      padding: 8px;
+      width: 120px;
+      border-radius: 6px;
+      border: none;
+      margin-right: 10px;
+    }
+
+    button {
+      padding: 8px 14px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      background: #38bdf8;
+      color: #020617;
+      font-weight: bold;
+      margin-right: 5px;
+    }
+
+    button:hover {
+      background: #0ea5e9;
+    }
+
+    .list-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 30px;
+      gap: 10px;
+    }
+
+    .node {
+      background: #22c55e;
+      color: #022c22;
+      min-width: 60px;
+      padding: 15px;
+      border-radius: 8px;
+      font-weight: bold;
+      position: relative;
+    }
+
+    .arrow {
+      font-size: 24px;
+      color: #facc15;
+    }
+
+    .empty {
+      color: #94a3b8;
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Linked List Visualizer</h1>
+
+  <div class="controls">
+    <input type="number" id="valueInput" placeholder="Value" />
+    <button onclick="insertNode()">Insert</button>
+    <button onclick="deleteNode()">Delete</button>
+  </div>
+
+  <div id="list" class="list-container">
+    <span class="empty">Linked list is empty</span>
+  </div>
+
+  <script>
+    let linkedList = [];
+
+    function renderList() {
+      const listDiv = document.getElementById("list");
+      listDiv.innerHTML = "";
+
+      if (linkedList.length === 0) {
+        listDiv.innerHTML = '<span class="empty">Linked list is empty</span>';
+        return;
+      }
+
+      linkedList.forEach((value, index) => {
+        const node = document.createElement("div");
+        node.className = "node";
+        node.textContent = value;
+        listDiv.appendChild(node);
+
+        if (index !== linkedList.length - 1) {
+          const arrow = document.createElement("div");
+          arrow.className = "arrow";
+          arrow.textContent = "→";
+          listDiv.appendChild(arrow);
+        }
+      });
+    }
+
+    function insertNode() {
+      const input = document.getElementById("valueInput");
+      const value = input.value;
+
+      if (value === "") return;
+
+      linkedList.push(value);
+      input.value = "";
+      renderList();
+    }
+
+    function deleteNode() {
+      const input = document.getElementById("valueInput");
+      const value = input.value;
+
+      if (value === "") return;
+
+      linkedList = linkedList.filter(v => v != value);
+      input.value = "";
+      renderList();
+    }
+
+    renderList();
+  </script>
+
+</body>
+</html>
