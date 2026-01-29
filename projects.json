@@ -6839,6 +6839,25 @@
       "name": "Gupta-02",
       "github": "https://github.com/Gupta-02"
     }
+  },
+  {
+    "title": "Step Counter Dashboard",
+    "description": "Dashboard to track daily and weekly step activity with daily step input, weekly comparison graph, and goal indicator.",
+    "tags": [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "Utility",
+      "Health",
+      "Dashboard"
+    ],
+    "links": {
+      "live": "./projects/Step-Counter-Dashboard/"
+    },
+    "author": {
+      "name": "Gupta-02",
+      "github": "https://github.com/Gupta-02"
+    }
   }
 ]
 
