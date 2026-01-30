@@ -1,4 +1,4 @@
-const workflowCanvas = document.getElementById('workflowCanvas');
+`const workflowCanvas = document.getElementById('workflowCanvas');
 const workflowOutput = document.getElementById('workflowOutput');
 const runWorkflowBtn = document.getElementById('runWorkflowBtn');
 const clearWorkflowBtn = document.getElementById('clearWorkflowBtn');
