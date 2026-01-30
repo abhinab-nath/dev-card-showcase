@@ -1,5 +1,28 @@
 [
     {
+        "title": "Keyboard Drum Kit",
+        "description": "An interactive drum machine where keyboard keys trigger realistic drum sounds using the Web Audio API. Press Q, W, E, R, A, S, D, F keys to play different drum samples including kick, snare, hi-hat, tom, clap, cymbal, percussion, and bass. Features smooth animations, visual feedback, and encourages playful exploration of keyboard input.",
+        "tags": [
+            "HTML",
+            "CSS",
+            "JavaScript",
+            "Web Audio API",
+            "Game",
+            "Music",
+            "Interactive",
+            "Keyboard",
+            "Drums",
+            "Audio"
+        ],
+        "links": {
+            "live": "./projects/Keyboard-Drum-Kit/"
+        },
+        "author": {
+            "name": "Gupta",
+            "github": "https://github.com/Gupta-02"
+        }
+    },
+    {
         "title": "Parkour Grid",
         "description": "Time-based parkour challenges in abstract 3D blocks with momentum-based movement, wall-runs, slides, checkpoints, and replay ghosts. Features modular level design and endless mode.",
         "tags": [
@@ -6944,6 +6967,28 @@
     "author": {
       "name": "Sneha-Amballa",
       "github": "https://github.com/Sneha-Amballa"
+    }
+  },
+  {
+    "title": "Keyboard Drum Kit",
+    "description": "An interactive drum machine where keyboard keys trigger drum sounds using the Web Audio API. Press Q, W, E, R, A, S, D, F keys to play different drum samples. Features auto-play patterns, tempo control, and visual step sequencer.",
+    "tags": [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "Web Audio API",
+      "Game",
+      "Music",
+      "Interactive",
+      "Keyboard",
+      "Drums"
+    ],
+    "links": {
+      "live": "./projects/drumsjs/"
+    },
+    "author": {
+      "name": "Gupta",
+      "github": "https://github.com/Gupta-02"
     }
   }
 ]
