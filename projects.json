@@ -7186,26 +7186,26 @@
     }
   },
   {
-    "title": "Sleep Quality Analyzer 🌙",
-    "description": "A comprehensive sleep tracking application that monitors sleep patterns, analyzes sleep quality, and provides personalized recommendations for better rest. Features sleep stage tracking (Deep, Light, REM), quality scoring, interactive charts, sleep statistics, streak tracking, and dynamic improvement tips. Includes data export functionality and beautiful night-themed UI.",
+    "title": "Meal Planner 🥗",
+    "description": "A comprehensive daily meal planning application that helps users create balanced, nutritious meal plans with nutrition tracking, progress visualization, and smart meal suggestions. Features meal organization by categories, real-time nutrition monitoring, interactive charts, and customizable daily goals to support healthy eating habits.",
     "tags": [
       "HTML",
       "CSS",
       "JavaScript",
       "Chart.js",
-      "Sleep Tracking",
-      "Health Analytics",
+      "Nutrition",
+      "Meal Planning",
+      "Health",
       "Wellness",
       "Data Visualization",
       "Local Storage",
       "Responsive",
-      "Sleep Science",
-      "Health Monitoring",
-      "Night Theme",
-      "Sleep Stages"
+      "Analytics",
+      "Diet",
+      "Healthy Eating"
     ],
     "links": {
-      "live": "./projects/sleep-quality-analyzer/"
+      "live": "./projects/meal-planner/"
     },
     "author": {
       "name": "Gupta",
