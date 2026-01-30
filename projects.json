@@ -20,7 +20,8 @@
             "name": "Gupta",
             "github": "https://github.com/Gupta-02"
         }
-    },
+    },{
+        "title": "Island Builder",
         "description": "A cozy tile-placement strategy game where players build island paradises by strategically placing tiles to maximize adjacency scoring. Features random tile deck, turn-based gameplay, and beautiful island-building mechanics.",
         "tags": [
             "HTML",
@@ -87,6 +88,22 @@
             "github": "https://github.com/omkarhole"
         }
     },
+    {
+        "title": "Dice Probability Simulator",
+        "description": "An interactive simulator that calculates and visualizes the probability outcomes of rolling one or multiple dice. Helps users understand basic probability concepts through simulations and real-time results.",
+        "tags": [
+            "HTML",
+            "CSS",
+            "JavaScript"
+        ],
+        "links": {
+            "live": "./projects/dice-probability-simulator/"
+        },
+        "author": {
+            "name": "Anvesha",
+            "github": "https://github.com/your-github-username"
+        }
+},
   {
         "title": "Digital Energy Meter",
         "description": "A digital energy meter that displays real-time energy consumption and provides controls for managing energy usage. Features include live energy flow visualization, adjustable drain rate, quick charge, pause drain, and reset functions, all within a clean and responsive interface.",
@@ -261,6 +278,23 @@
             "github": "https://github.com/omkarhole"
         }
     },
+    {
+        "title": "Personality Check",
+        "description": "An interactive personality assessment tool with a calm, psychology-inspired UI. Features scenario-based questions, smooth transitions, and clear personality insights, designed with warm, human-centric color tones and a fully responsive layout.",
+        "tags": [
+            "HTML",
+            "CSS",
+            "JavaScript",
+            "UI/UX"
+        ],
+        "links": {
+            "live": "./projects/personality-check/"
+        },
+        "author": {
+            "name": "Anvesha",
+            "github": "https://github.com/your-github-username"
+        }
+},
       {
         "title": "Battle of Elements",
         "description": "A simple card game where two players draw cards and the player with the higher card wins the round. The game continues until all cards are played, and the player with the most rounds won is declared the overall winner.",
@@ -6790,7 +6824,7 @@
     "name": "YOUR_NAME_HERE",
     "github": "https://github.com/YOUR_GITHUB_USERNAME"
   }
-}
+},
 
   {
     "title": "Retro Terminal Website",
@@ -6908,8 +6942,8 @@
       "live": "./projects/Mood-Based-Background/"
     },
     "author": {
-      "name": "Gupta",
-      "github": "https://github.com/Gupta-02"
+      "name": "Sneha-Amballa",
+      "github": "https://github.com/Sneha-Amballa"
     }
   }
 ]

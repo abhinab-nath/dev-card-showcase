@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <header>
+            <h1>Weather Dashboard</h1>
+            <button id="theme-toggle" title="Toggle theme">🌙</button>
+        </header>
+        <section class="search-section">
+            <input type="text" id="city-input" placeholder="Enter city name...">
+            <button id="search-btn">Search</button>
+            <button id="geo-btn" title="Use my location">📍</button>
+            <div id="unit-toggle">
+                <button id="celsius" class="active">°C</button>
+                <button id="fahrenheit">°F</button>
+            </div>
+        </section>
+        <section class="current-weather">
+            <h2 id="city-name">London, GB</h2>
+            <div class="weather-main">
+                <img id="weather-icon" src="https://openweathermap.org/img/wn/10d@2x.png" alt="Weather Icon">
+                <span id="temperature">15°</span>
+            </div>
+            <div id="weather-desc">Light Rain</div>
+            <div id="air-quality">Air Quality: Good</div>
+        </section>
+        <section class="hourly-forecast">
+            <h3>Hourly Forecast</h3>
+            <div id="hourly-list">
+                <div class="hour-card">
+                    <div>09:00</div>
+                    <img src="https://openweathermap.org/img/wn/10d.png" alt="">
+                    <div>15°</div>
+                </div>
+                <div class="hour-card">
+                    <div>10:00</div>
+                    <img src="https://openweathermap.org/img/wn/10d.png" alt="">
+                    <div>16°</div>
+                </div>
+                <div class="hour-card">
+                    <div>11:00</div>
+                    <img src="https://openweathermap.org/img/wn/04d.png" alt="">
+                    <div>17°</div>
+                </div>
+            </div>
+        </section>
+        <section class="daily-forecast">
+            <h3>7-Day Forecast</h3>
+            <div id="daily-list">
+                <div class="day-card">
+                    <div>Tue</div>
+                    <img src="https://openweathermap.org/img/wn/10d.png" alt="">
+                    <div>15°</div>
+                </div>
+                <div class="day-card">
+                    <div>Wed</div>
+                    <img src="https://openweathermap.org/img/wn/04d.png" alt="">
+                    <div>17°</div>
+                </div>
+                <div class="day-card">
+                    <div>Thu</div>
+                    <img src="https://openweathermap.org/img/wn/01d.png" alt="">
+                    <div>18°</div>
+                </div>
+                <div class="day-card">
+                    <div>Fri</div>
+                    <img src="https://openweathermap.org/img/wn/02d.png" alt="">
+                    <div>16°</div>
+                </div>
+                <div class="day-card">
+                    <div>Sat</div>
+                    <img src="https://openweathermap.org/img/wn/03d.png" alt="">
+                    <div>14°</div>
+                </div>
+                <div class="day-card">
+                    <div>Sun</div>
+                    <img src="https://openweathermap.org/img/wn/10d.png" alt="">
+                    <div>13°</div>
+                </div>
+                <div class="day-card">
+                    <div>Mon</div>
+                    <img src="https://openweathermap.org/img/wn/09d.png" alt="">
+                    <div>12°</div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
