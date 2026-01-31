@@ -7528,6 +7528,34 @@
       "name": "Gupta",
       "github": "https://github.com/Gupta-02"
     }
+  },
+  {
+    "title": "Fitness Analytics Dashboard 📊",
+    "description": "A comprehensive fitness analytics dashboard for power users, featuring multi-metric tracking, interactive charts, goal setting, AI-powered insights, and advanced data visualization. Track steps, calories, distance, heart rate, weight, and active minutes with weekly/monthly trends, progress tracking, and personalized recommendations for optimal fitness management.",
+    "tags": [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "Chart.js",
+      "Fitness Tracking",
+      "Data Visualization",
+      "Analytics",
+      "Health Monitoring",
+      "Interactive Dashboard",
+      "Goal Tracking",
+      "AI Insights",
+      "Responsive",
+      "Local Storage",
+      "Multi-metric",
+      "Advanced UI"
+    ],
+    "links": {
+      "live": "./projects/Fitness-Analytics-Dashboard/"
+    },
+    "author": {
+      "name": "Gupta",
+      "github": "https://github.com/Gupta-02"
+    }
   }
 ]
 
